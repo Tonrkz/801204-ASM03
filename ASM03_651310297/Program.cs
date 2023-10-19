@@ -1,9 +1,11 @@
-﻿namespace ASM03_651310297 {
+﻿using System.Runtime.InteropServices;
+
+namespace ASM03_651310297 {
     internal class Program {
         static void Main(string[] args) {
-            Sprites aSprite = new Sprites();
-            Console.SetCursorPosition(30, 0);
-            Console.WriteLine(aSprite.zombie);
+            Console.WindowWidth = 200;
+            Console.WindowHeight = 70;
+            
         }
     }
 }
