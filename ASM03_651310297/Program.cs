@@ -5,7 +5,6 @@ namespace ASM03_651310297 {
         static void Main(string[] args) {
             Console.WindowWidth = 200;
             Console.WindowHeight = 70;
-            
         }
     }
 }

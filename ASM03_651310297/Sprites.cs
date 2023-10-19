@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace ASM03_651310297 {
     internal class Sprites {
-        public String[] slime = new String[] { "        SLIME       ",
+        static readonly Sprites instance = new Sprites();
+        public static Sprites Instance {
+            get {
+                return instance;
+            }
+        }
+
+        public readonly String[] slime = new String[] { "        SLIME       ",
                                                "                 ███",
                                                "       ████████   ██",
                                                "   ██████████████",
@@ -17,7 +24,7 @@ namespace ASM03_651310297 {
                                                "███████████████████",
                                                "  ████████████████" };
 
-        public String[] bigSlime = new String[] { "                                                  ######+",
+        public readonly String[] bigSlime = new String[] { "                                                  ######+",
                                                   "                                                #########+++",
                                                   "                        BIG SLIME               ##########--",
                                                   "                                                -+########-.",
@@ -46,7 +53,7 @@ namespace ASM03_651310297 {
                                                   "       ........----+++++++++++++++++++-+-........",
                                                   "             ---.........................." };
 
-        public String[] zombie = new String[]{  "          ZOMBIE",
+        public readonly String[] zombie = new String[]{  "          ZOMBIE",
                                                 "",
                                                 "         -#######-",
                                                 "       +###########+",
@@ -66,7 +73,7 @@ namespace ASM03_651310297 {
                                                 "         --.  ##.",
                                                 "        ++-. -+#."};
 
-        public String[] phoenix = new String[] { "                    PHOENIX          :::::",
+        public readonly String[] phoenix = new String[] { "                    PHOENIX          :::::",
                                                  "                                  $x++x+",
                                                  "   X:::::+             ;         $xXxx  +  :;",
                                                  "       :;++&          ::+        x+$$xX:: :::",
@@ -95,7 +102,7 @@ namespace ASM03_651310297 {
                                                  "             X$Xx&&&&$$&&&&&&XxxX$",
                                                  "                 ++xxxxxxxxxxx" };
 
-        public String[] dragon = new String[] { "                                                              .:::::.",
+        public readonly String[] dragon = new String[] { "                                                              .:::::.",
                                                 "    :: ..                                             :::::   .+",
                                                 "      ;  :                                        ;;;;    .XX.",
                                                 "    x$ :: :                                    :;;    xXXXXX",
@@ -133,7 +140,7 @@ namespace ASM03_651310297 {
                                                 "       +;        .....                   .+++:       +++",
                                                 "                      +                       ......."};
 
-        public String[] player = new String[] { "       ##########",
+        public readonly String[] player = new String[] { "       ##########",
                                                 "      ##.        ##",
                                                 "   ###    ##  ##  ##",
                                                 "   ###    ##  ##  ##",
