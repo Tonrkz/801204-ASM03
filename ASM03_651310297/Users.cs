@@ -5,8 +5,8 @@ using System.Text;
 
 namespace ASM03_651310297 {
     public abstract class Users {
-        private Swords sword;
-        private Shields shield;
+        public Swords sword { get; set; }
+        public Shields shield { get; set; }
         public String name { get; set; }
         public int HP { get; set; }
         public int maxHP { get; set; }
@@ -29,19 +29,19 @@ namespace ASM03_651310297 {
 
         public abstract String MoveEnterStatusSaveExit();
 
-        public Users(string n = "Player")
+        public Users(String a = "Player")
         {
-            this.name = n;
-            this.HP = 10;
-            this.maxHP = 10;
-            this.level = 1;
-            this.EXP = 0;
-            this.maxEXP = 5;
-            this.ATK = 10;
-            this.DEF = 10;
-            this.AGI = 10;
-            this.gold = 0;
-            this.position = 0;
+            name = a;
+            HP = 10;
+            maxHP = 10;
+            level = 1;
+            EXP = 0;
+            maxEXP = 5;
+            ATK = 10;
+            DEF = 10;
+            AGI = 10;
+            gold = 0;
+            position = 0;
         }
     }
 }

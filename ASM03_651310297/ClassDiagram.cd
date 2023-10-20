@@ -1,20 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ASM03_651310297.Program" Collapsed="true">
+  <Class Name="ASM03_651310297.Program">
     <Position X="15.75" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="ASM03_651310297.Program.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Program.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAAA=</HashCode>
+      <HashCode>AAABAAAAAAEAAAAYAAoAAABAAAAIAQAEAABBRAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ASM03_651310297.Sprites" Collapsed="true">
-    <Position X="12.25" Y="1.75" Width="1.5" />
+  <Class Name="ASM03_651310297.Sprites">
+    <Position X="12.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQIAAAAAAEAAAAAAIAAAAAAABAQAABQAIAAAAAAAA=</HashCode>
       <FileName>Sprites.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ASM03_651310297.GameManager" Collapsed="true">
+  <Class Name="ASM03_651310297.GameManager">
     <Position X="12.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAhABAAABAEAAAQAAAACAAAAA=</HashCode>
@@ -24,14 +31,14 @@
   <Class Name="ASM03_651310297.Users">
     <Position X="5.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gEAAAQAAAAACgAABgAAEAAAAQJEEAAAAAAAAgAAAAAI=</HashCode>
+      <HashCode>gEAAAQAAAAACgAABgAAEIAABQJEEAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Users.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Players">
     <Position X="5.5" Y="11" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAABAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Players.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -73,7 +80,7 @@
   <Class Name="ASM03_651310297.Map">
     <Position X="14" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAEAAAAIAAAAAAAAAAAAAAAABAAAAAUIAAAAAAAAA=</HashCode>
       <FileName>Map.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -85,7 +92,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.XMLOperator">
-    <Position X="14" Y="1.75" Width="1.5" />
+    <Position X="14" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
       <FileName>XMLOperator.cs</FileName>

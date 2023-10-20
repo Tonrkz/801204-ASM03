@@ -49,10 +49,10 @@ namespace ASM03_651310297 {
         }
         static String CreatePlayerScreenState() {
             String name = GameManager.Instance.CreatePlayerScreen();
-            Console.WriteLine("Are you sure with that name? (Y/n): ");
+            Console.Write("Are you sure with that name? (Y/n): ");
             String input = Console.ReadLine();
-            if (input.Contains("y", StringComparison.OrdinalIgnoreCase) || input == null) {
-                Players aPlayer = new Players(name);
+            if (input.Contains("y", StringComparison.OrdinalIgnoreCase) || input == "") {
+                Players.Instance.name = name;
             }
             ActivateProgramState = MapScreenState;
             return "CreatePlayerScreenState";
@@ -104,7 +104,22 @@ namespace ASM03_651310297 {
             return "PlaceScreenState";
         }
         static String SaveScreenState() {
-            return "SaveScreenState";
+            XMLOperator.Instance.SavePlayer();
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+            Thread.Sleep(100);
+            Console.WriteLine($"Name: {Players.Instance.name}");
+            Console.WriteLine($"HP: {Players.Instance.HP}/{Players.Instance.maxHP}");
+            Console.WriteLine($"Level: {Players.Instance.level}");
+            Console.WriteLine($"EXP: {Players.Instance.EXP}/{Players.Instance.maxEXP}");
+            Console.WriteLine($"ATK: {Players.Instance.ATK}");
+            Console.WriteLine($"DEF: {Players.Instance.DEF}");
+            Console.WriteLine($"AGI: {Players.Instance.AGI}");
+            Console.WriteLine($"Gold: {Players.Instance.gold}");
+            Console.WriteLine("\nSaved");
+            GameManager.Instance.PressEnterToContinue();
+            ActivateProgramState = MapScreenState;
+            return "MapScreenState";
         }
         static String ExitScreenState() {
             gameRunning = false;

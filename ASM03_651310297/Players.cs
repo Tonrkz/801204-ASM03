@@ -9,14 +9,14 @@ namespace ASM03_651310297 {
         public static Players Instance {
             get {
                 if (instance == null) {
-                    instance = new Players();
+                    instance = new Players("Player");
                 }
                 return instance;
             }
         }
 
         public override String MoveEnterStatusSaveExit() {
-            Console.Write("Input adjacent place number to move into\nInput 'Enter' to visit place\nInput 'Status' to view status menu.\nInput 'Save' to save game.\nInput 'Exit' to quit game\nInput: ");
+            Console.Write("Input adjacent place number to move into and enter it.\nInput 'Enter' to enter current place.\nInput 'Status' to view status menu.\nInput 'Save' to save game.\nInput 'Exit' to quit game\nInput: ");
             string input = Console.ReadLine();
             if (input == "1" || input.Contains("Town", StringComparison.OrdinalIgnoreCase)) {
                 if (Map.Instance.adjacencyMatrix[position, 0]) {
@@ -67,18 +67,18 @@ namespace ASM03_651310297 {
         }
 
 
-        public Players(string n = "Player") {
-            this.name = n;
-            this.HP = 10;
-            this.maxHP = 10;
-            this.level = 1;
-            this.EXP = 0;
-            this.maxEXP = 5;
-            this.ATK = 10;
-            this.DEF = 10;
-            this.AGI = 10;
-            this.gold = 0;
-            this.position = 0;
+        Players(string a) : base(a) {
+            name = a;
+            HP = 10;
+            maxHP = 10;
+            level = 1;
+            EXP = 0;
+            maxEXP = 5;
+            ATK = 10;
+            DEF = 10;
+            AGI = 10;
+            gold = 0;
+            position = 0;
         }
     }
 }
