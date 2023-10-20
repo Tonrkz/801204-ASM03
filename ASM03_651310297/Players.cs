@@ -48,7 +48,7 @@ namespace ASM03_651310297 {
                     return "Enter";
                 }
             }
-            else if (input.Contains("Enter", StringComparison.OrdinalIgnoreCase)) {
+            else if (input.Contains("Enter", StringComparison.OrdinalIgnoreCase) || input == "") {
                 return "Enter";
             }
             else if (input.Contains("Status", StringComparison.OrdinalIgnoreCase)) {

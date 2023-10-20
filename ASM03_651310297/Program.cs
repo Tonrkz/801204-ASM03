@@ -3,52 +3,47 @@ using System.Xml.Linq;
 
 namespace ASM03_651310297 {
     internal class Program {
+        static Random aRandom = new Random();
         static bool gameRunning = true;
-        delegate String State();
+        delegate void State();
         static String state = "";
         static State ActivateProgramState;
         static Program() {
             Thread.Sleep(100);
             ActivateProgramState = MaximizePleaseScreenState;
         }
-        static String MaximizePleaseScreenState() {
+        static void MaximizePleaseScreenState() {
             Thread.Sleep(100);
             GameManager.Instance.MaximizePleaseScreen();
             GameManager.Instance.PressEnterToContinue();
             ActivateProgramState = StoryScreenState;
-            return "MaximizePleaseScreenState";
         }
-        static String StoryScreenState() {
+        static void StoryScreenState() {
             Thread.Sleep(100);
             GameManager.Instance.StoryScreen();
             GameManager.Instance.PressEnterToContinue();
             ActivateProgramState = StartScreenState;
-            return "StoryScreenState";
         }
-        static String StartScreenState() {
+        static void StartScreenState() {
             Thread.Sleep(100);
             String output = GameManager.Instance.StartScreen();
             if (output == "1") {
                 ActivateProgramState = CreatePlayerScreenState;
                 ActivateProgramState();
-                return "CreatePlayerScreenState";
             }
             else if (output == "2") {
                 ActivateProgramState = LoadPlayerScreenState;
                 ActivateProgramState();
-                return "LoadPlayerScreenState";
             }
             else if (output == "3") {
                 ActivateProgramState = ExitScreenState;
                 ActivateProgramState();
-                return "ExitScreenState";
             }
             else {
                 ActivateProgramState();
             }
-            return "StartScreenState";
         }
-        static String CreatePlayerScreenState() {
+        static void CreatePlayerScreenState() {
             String name = GameManager.Instance.CreatePlayerScreen();
             Console.Write("Are you sure with that name? (Y/n): ");
             String input = Console.ReadLine();
@@ -56,9 +51,8 @@ namespace ASM03_651310297 {
                 Players.Instance.name = name;
             }
             ActivateProgramState = MapScreenState;
-            return "MapScreenState";
         }
-        static String LoadPlayerScreenState() {
+        static void LoadPlayerScreenState() {
             bool choose = false;
             while (!choose) {
                 Console.Clear();
@@ -96,9 +90,8 @@ namespace ASM03_651310297 {
                 }
             }
             ActivateProgramState = MapScreenState;
-            return "MapScreenState";
         }
-        static String MapScreenState() {
+        static void MapScreenState() {
             Map.Instance.UpdateMap();
             Map.Instance.ShowMap();
             state = Players.Instance.MoveEnterStatusSaveExit();
@@ -119,9 +112,8 @@ namespace ASM03_651310297 {
                 GameManager.Instance.PressEnterToContinue();
                 ActivateProgramState();
             }
-            return "MapScreenState";
         }
-        static String StatusScreenState() {
+        static void StatusScreenState() {
             Console.Clear();
             Console.SetCursorPosition(0, 0);
             Thread.Sleep(100);
@@ -135,24 +127,25 @@ namespace ASM03_651310297 {
             Console.WriteLine($"Gold: {Players.Instance.gold}");
             GameManager.Instance.PressEnterToContinue();
             ActivateProgramState = MapScreenState;
-            return "MapScreenState";
         }
-        static String PlaceScreenState() {
+        static void PlaceScreenState() {
+            Console.WriteLine(Players.Instance.position);
             switch (Players.Instance.position) {
                 case 0:
                     ActivateProgramState = TownScreenState;
+                    ActivateProgramState();
                     break;
                 case 1:
                 case 2:
                 case 3:
                 case 4:
                     ActivateProgramState = BattleScreenState;
+                    ActivateProgramState();
                     break;
             }
-            return "PlaceScreenState";
         }
 
-        static String TownScreenState() {
+        static void TownScreenState() {
             String[] words = new String[] { "1. Shop", "2. Inn", "3. Exit" };
             Console.Clear();
             Thread.Sleep(250);
@@ -179,13 +172,11 @@ namespace ASM03_651310297 {
                 GameManager.Instance.PressEnterToContinue();
                 ActivateProgramState();
             }
-            return "TownScreenState";
         }
 
-        static String ShopScreenState() {
-            return "ShopScreenState";
+        static void ShopScreenState() {
         }
-        static String InnScreenState() {
+        static void InnScreenState() {
             String[] words = new String[] { "You have a fully sleep. zzZZ..", "HP restores to its max." };
             Console.Clear();
             Thread.Sleep(250);
@@ -199,14 +190,82 @@ namespace ASM03_651310297 {
             Console.SetCursorPosition(0, y + 13);
             GameManager.Instance.PressEnterToContinue();
             ActivateProgramState = TownScreenState;
-            return "TownScreenState";
         }
 
-        static String BattleScreenState() {
-            return "BattleScreenState";
+        static void BattleScreenState() {
+            switch (Players.Instance.position) {
+                case 1:
+                    int rng = aRandom.Next(1, 101);
+                    if (rng >= 85) {
+                        BigSlimes aBigSlime = new BigSlimes();
+                        while (aBigSlime.HP >= 0) {
+                            Console.Clear();
+                            Thread.Sleep(250);
+                            Sprites.Instance.PrintSprite(Sprites.Instance.bigSlime, 120, 12);
+                            Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
+                            Console.SetCursorPosition(0, 0);
+                            GameManager.Instance.PressEnterToContinue();
+                            ActivateProgramState = MapScreenState;
+                            break;
+                        }
+                    }
+                    else {
+                        Slimes aSlime = new Slimes();
+                        while (aSlime.HP >= 0) {
+                            Console.Clear();
+                            Thread.Sleep(250);
+                            Sprites.Instance.PrintSprite(Sprites.Instance.slime, 120, 30);
+                            Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
+                            Console.SetCursorPosition(0, 0);
+                            GameManager.Instance.PressEnterToContinue();
+                            ActivateProgramState = MapScreenState;
+                            break;
+                        }
+                    }
+                    break;
+                case 2:
+                    Zombies aZombie = new Zombies();
+                    while (aZombie.HP >= 0) {
+                        Console.Clear();
+                        Thread.Sleep(250);
+                        Sprites.Instance.PrintSprite(Sprites.Instance.zombie, 120, 21);
+                        Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
+                        Console.SetCursorPosition(0, 0);
+                        GameManager.Instance.PressEnterToContinue();
+                        ActivateProgramState = MapScreenState;
+                        break;
+                    }
+                    break;
+                case 3:
+                    Phoenixes aPhoenix = new Phoenixes();
+                    while (aPhoenix.HP >= 0) {
+                        Console.Clear();
+                        Thread.Sleep(250);
+                        Sprites.Instance.PrintSprite(Sprites.Instance.phoenix, 120, 2);
+                        Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
+                        Console.SetCursorPosition(0, 0);
+                        GameManager.Instance.PressEnterToContinue();
+                        ActivateProgramState = MapScreenState;
+                        break;
+                    }
+                    break;
+                case 4:
+                    Dragons aDragon = new Dragons();
+                    while (aDragon.HP >= 0) {
+                        Console.Clear();
+                        Thread.Sleep(250);
+                        Sprites.Instance.PrintSprite(Sprites.Instance.dragon, 120, 1);
+                        Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
+                        Console.SetCursorPosition(0, 0);
+                        GameManager.Instance.PressEnterToContinue();
+                        ActivateProgramState = MapScreenState;
+                        break;
+                    }
+                    break;
+            }
         }
 
-        static String SaveScreenState() {
+        static void SaveScreenState() {
             XMLOperator.Instance.SavePlayer();
             Console.Clear();
             Console.SetCursorPosition(0, 0);
@@ -222,11 +281,9 @@ namespace ASM03_651310297 {
             Console.WriteLine("\nSaved");
             GameManager.Instance.PressEnterToContinue();
             ActivateProgramState = MapScreenState;
-            return "MapScreenState";
         }
-        static String ExitScreenState() {
+        static void ExitScreenState() {
             gameRunning = false;
-            return "ExitScreenState";
         }
 
         static void Main(string[] args) {
