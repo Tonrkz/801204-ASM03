@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System.Xml.Linq;
 
 namespace ASM03_651310297 {
     internal class Program {
@@ -55,11 +56,47 @@ namespace ASM03_651310297 {
                 Players.Instance.name = name;
             }
             ActivateProgramState = MapScreenState;
-            return "CreatePlayerScreenState";
+            return "MapScreenState";
         }
         static String LoadPlayerScreenState() {
+            bool choose = false;
+            while (!choose) {
+                Console.Clear();
+                Console.SetCursorPosition(0, 0);
+                Thread.Sleep(100);
+                List<XElement> playerList = XMLOperator.Instance.LoadPlayer().Elements("player").ToList();
+                foreach (XElement player in playerList) {
+                    Console.WriteLine($"Name: {player.Attribute("name").Value}");
+                    Console.WriteLine($"HP: {player.Element("HP").Value}/{player.Element("maxHP").Value}");
+                    Console.WriteLine($"Level: {player.Element("level").Value}");
+                    Console.WriteLine($"EXP: {player.Element("EXP").Value}/{player.Element("maxEXP").Value}");
+                    Console.WriteLine($"Gold: {player.Element("gold").Value}\n");
+                }
+                Console.Write("\nInput player's name to load: ");
+                String name = Console.ReadLine();
+                if (XMLOperator.Instance.LoadPlayer().Elements("player").Any(item => item.Attribute("name").Value == name)) {
+                    XElement player = XMLOperator.Instance.LoadPlayer().Elements("player").Where(item => item.Attribute("name").Value == name).FirstOrDefault();
+                    Players.Instance.name = player.Attribute("name").Value;
+                    Players.Instance.HP = int.Parse(player.Element("HP").Value);
+                    Players.Instance.maxHP = int.Parse(player.Element("maxHP").Value);
+                    Players.Instance.level = int.Parse(player.Element("level").Value);
+                    Players.Instance.EXP = int.Parse(player.Element("EXP").Value);
+                    Players.Instance.maxEXP = int.Parse(player.Element("maxEXP").Value);
+                    Players.Instance.ATK = int.Parse(player.Element("ATK").Value);
+                    Players.Instance.DEF = int.Parse(player.Element("DEF").Value);
+                    Players.Instance.AGI = int.Parse(player.Element("AGI").Value);
+                    Players.Instance.position = int.Parse(player.Element("position").Value);
+                    Players.Instance.gold = int.Parse(player.Element("gold").Value);
+
+                    choose = true;
+                }
+                else {
+                    Console.WriteLine("Invalid name.");
+                    GameManager.Instance.PressEnterToContinue();
+                }
+            }
             ActivateProgramState = MapScreenState;
-            return "LoadPlayerScreenState";
+            return "MapScreenState";
         }
         static String MapScreenState() {
             Map.Instance.UpdateMap();

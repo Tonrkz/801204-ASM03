@@ -41,5 +41,9 @@ namespace ASM03_651310297 {
                                                new XElement("shieldID", 5)));
             players.Save(pathToPlayersXML);
         }
+
+        public XElement LoadPlayer() {
+            return players;
+        }
     }
 }
