@@ -36,7 +36,6 @@ namespace ASM03_651310297 {
         }
 
         public String StartScreen() {
-            Console.Clear();
             Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 30);
             Sprites.Instance.PrintSprite(Sprites.Instance.dragon, 120, 2);
             String[] words = new String[] { "1. New Game", "2. Load Game", "3. Exit" };
@@ -51,10 +50,12 @@ namespace ASM03_651310297 {
             return Console.ReadLine();
         }
 
-        public void CreatePlayerScreen() {
+        public String CreatePlayerScreen() {
             Console.Clear();
+            Thread.Sleep(250);
             Console.SetCursorPosition(0, 0);
-
+            Console.Write("Enter player's name: ");
+            return Console.ReadLine();
         }
 
         public void PressEnterToContinue() {

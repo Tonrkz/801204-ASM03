@@ -13,18 +13,26 @@ namespace ASM03_651310297 {
 
             Thread.Sleep(500);
 
+            switch (GameManager.Instance.StartScreen()) {
+                case "1":
+                    String name = GameManager.Instance.CreatePlayerScreen();
+                    Console.WriteLine("Are you sure with that name? (Y/n): ");
+                    if (Console.ReadLine().Contains("y", StringComparison.OrdinalIgnoreCase) || Console.ReadLine() == null) {
+                        Players aPlayer = new Players(name);
+                    }
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    gameRunning = false;
+                    Console.Clear();
+                    break;
+                default:
+                    goto case "1";
+            }
+
             while (gameRunning) {
-                switch (GameManager.Instance.StartScreen()) {
-                    case "1":
-                        break;
-                    case "2":
-                        break;
-                    case "3":
-                        gameRunning = false;
-                        break;
-                    default:
-                        break;
-                }
+                break;
             }
         }
     }
