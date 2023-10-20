@@ -138,8 +138,74 @@ namespace ASM03_651310297 {
             return "MapScreenState";
         }
         static String PlaceScreenState() {
+            switch (Players.Instance.position) {
+                case 0:
+                    ActivateProgramState = TownScreenState;
+                    break;
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    ActivateProgramState = BattleScreenState;
+                    break;
+            }
             return "PlaceScreenState";
         }
+
+        static String TownScreenState() {
+            String[] words = new String[] { "1. Shop", "2. Inn", "3. Exit" };
+            Console.Clear();
+            Thread.Sleep(250);
+            int y = Console.WindowHeight / 2 - 10;
+            foreach (var word in words) {
+                Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
+                Console.WriteLine(word);
+                y++;
+            }
+            Console.SetCursorPosition(0, y + 13);
+            Console.Write("Input menu number to continue: ");
+            String input = Console.ReadLine();
+            if (input == "1") {
+                ActivateProgramState = ShopScreenState;
+            }
+            else if (input == "2") {
+                ActivateProgramState = InnScreenState;
+            }
+            else if (input == "3") {
+                ActivateProgramState = MapScreenState;
+            }
+            else {
+                Console.WriteLine("Invalid input.");
+                GameManager.Instance.PressEnterToContinue();
+                ActivateProgramState();
+            }
+            return "TownScreenState";
+        }
+
+        static String ShopScreenState() {
+            return "ShopScreenState";
+        }
+        static String InnScreenState() {
+            String[] words = new String[] { "You have a fully sleep. zzZZ..", "HP restores to its max." };
+            Console.Clear();
+            Thread.Sleep(250);
+            Players.Instance.HP = Players.Instance.maxHP;
+            int y = Console.WindowHeight / 2 - 10;
+            foreach (var word in words) {
+                Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
+                Console.WriteLine(word);
+                y++;
+            }
+            Console.SetCursorPosition(0, y + 13);
+            GameManager.Instance.PressEnterToContinue();
+            ActivateProgramState = TownScreenState;
+            return "TownScreenState";
+        }
+
+        static String BattleScreenState() {
+            return "BattleScreenState";
+        }
+
         static String SaveScreenState() {
             XMLOperator.Instance.SavePlayer();
             Console.Clear();
