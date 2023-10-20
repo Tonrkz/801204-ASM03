@@ -64,7 +64,24 @@ namespace ASM03_651310297 {
         static String MapScreenState() {
             Map.Instance.UpdateMap();
             Map.Instance.ShowMap();
-            GameManager.Instance.PressEnterToContinue();
+            state = Players.Instance.MoveEnterStatusSaveExit();
+            if (state == "Enter") {
+                ActivateProgramState = PlaceScreenState;
+            }
+            else if (state == "Status") {
+                ActivateProgramState = StatusScreenState;
+            }
+            else if (state == "Save") {
+                ActivateProgramState = SaveScreenState;
+            }
+            else if (state == "Exit") {
+                ActivateProgramState = ExitScreenState;
+            }
+            else {
+                Console.WriteLine("Invalid input.");
+                GameManager.Instance.PressEnterToContinue();
+                ActivateProgramState();
+            }
             return "MapScreenState";
         }
         static String StatusScreenState() {
@@ -82,10 +99,6 @@ namespace ASM03_651310297 {
         }
 
         static void Main(string[] args) {
-            ActivateProgramState(); //MaximizePleaseScreenState
-            ActivateProgramState(); //StoryScreenState
-            ActivateProgramState(); //StartScreenState
-
             while (gameRunning) {
                 ActivateProgramState();
             }

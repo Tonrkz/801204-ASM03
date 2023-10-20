@@ -35,7 +35,7 @@ namespace ASM03_651310297 {
                 Console.WriteLine(word);
                 y++;
             }
-            Console.SetCursorPosition(0, y + 15);
+            Console.SetCursorPosition(0, y + 13);
         }
 
         public void UpdateMap() {
