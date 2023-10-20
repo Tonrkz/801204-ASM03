@@ -69,8 +69,8 @@ namespace ASM03_651310297 {
 
         public Players(string n = "Player") {
             this.name = n;
-            this.HP = 100;
-            this.maxHP = 100;
+            this.HP = 10;
+            this.maxHP = 10;
             this.level = 1;
             this.EXP = 0;
             this.maxEXP = 5;

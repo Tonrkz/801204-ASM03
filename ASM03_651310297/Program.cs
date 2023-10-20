@@ -85,7 +85,20 @@ namespace ASM03_651310297 {
             return "MapScreenState";
         }
         static String StatusScreenState() {
-            return "StatusScreenState";
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+            Thread.Sleep(100);
+            Console.WriteLine($"Name: {Players.Instance.name}");
+            Console.WriteLine($"HP: {Players.Instance.HP}/{Players.Instance.maxHP}");
+            Console.WriteLine($"Level: {Players.Instance.level}");
+            Console.WriteLine($"EXP: {Players.Instance.EXP}/{Players.Instance.maxEXP}");
+            Console.WriteLine($"ATK: {Players.Instance.ATK}");
+            Console.WriteLine($"DEF: {Players.Instance.DEF}");
+            Console.WriteLine($"AGI: {Players.Instance.AGI}");
+            Console.WriteLine($"Gold: {Players.Instance.gold}");
+            GameManager.Instance.PressEnterToContinue();
+            ActivateProgramState = MapScreenState;
+            return "MapScreenState";
         }
         static String PlaceScreenState() {
             return "PlaceScreenState";
