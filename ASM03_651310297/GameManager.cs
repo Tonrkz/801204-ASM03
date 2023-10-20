@@ -46,7 +46,7 @@ namespace ASM03_651310297 {
                 y++;
             }
             Console.SetCursorPosition(0, y + 18);
-            Console.Write("Input number to continue: ");
+            Console.Write("Input adjacent place number to move into or input 'Enter' to visit town: ");
             return Console.ReadLine();
         }
 

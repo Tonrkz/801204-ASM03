@@ -32,7 +32,9 @@ namespace ASM03_651310297 {
             }
 
             while (gameRunning) {
-                break;
+                Map.Instance.UpdateMap();
+                Map.Instance.ShowMap();
+                GameManager.Instance.PressEnterToContinue();
             }
         }
     }

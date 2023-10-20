@@ -17,7 +17,7 @@ namespace ASM03_651310297 {
         public int DEF { get; set; }
         public int AGI { get; set; }
         public int gold { get; set; }
-        public int _position { get; set; }
+        public int position { get; set; }
 
         public void Attack() {
             throw new System.NotImplementedException();
@@ -39,7 +39,7 @@ namespace ASM03_651310297 {
             this.DEF = 10;
             this.AGI = 10;
             this.gold = 0;
-            this._position = 0;
+            this.position = 0;
         }
     }
 }
