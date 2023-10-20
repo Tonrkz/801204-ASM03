@@ -14,6 +14,20 @@ namespace ASM03_651310297 {
                 return instance;
             }
         }
+
+        /*public override String MoveEnterStatusSaveExit() {
+            Console.Write("Input adjacent place number to move into\nInput 'Enter' to visit place\nInput 'Status' to view status menu.\nInput 'Save' to save game.\nInput 'Exit' to quit game\nInput: ");
+            string input = Console.ReadLine();
+            if (input == "1" || input.Contains("Town", StringComparison.OrdinalIgnoreCase)) {
+                if (Convert.ToInt32(input) - 1 ==  position) {
+                    return "Enter";
+                }
+                else if (Map.Instance.adjacencyMatrix[position,0]) {
+
+                }
+            }
+        }*/
+
         public Players(string n = "Player") {
             this.name = n;
             this.HP = 100;

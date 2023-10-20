@@ -26,33 +26,33 @@ namespace ASM03_651310297 {
                 "The castle was taken over by dragons.",
                 "We need a hero to save the castle..."
             };
-            int y = Console.WindowHeight / 2 - 4;
-            foreach (String word in words) {
-                Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
-                Console.WriteLine(word);
-                y++;
-            }
-            Console.SetCursorPosition(0, y + 20);
-        }
-
-        public String StartScreen() {
-            Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 30);
-            Sprites.Instance.PrintSprite(Sprites.Instance.dragon, 120, 2);
-            String[] words = new String[] { "1. New Game", "2. Load Game", "3. Exit" };
-            int y = Console.WindowHeight / 2 - 4;
+            int y = Console.WindowHeight / 2 - 8;
             foreach (String word in words) {
                 Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
                 Console.WriteLine(word);
                 y++;
             }
             Console.SetCursorPosition(0, y + 18);
-            Console.Write("Input adjacent place number to move into or input 'Enter' to visit town: ");
+        }
+
+        public String StartScreen() {
+            Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 30);
+            Sprites.Instance.PrintSprite(Sprites.Instance.dragon, 120, 2);
+            String[] words = new String[] { "1. New Game", "2. Load Game", "3. Exit" };
+            int y = Console.WindowHeight / 2 - 8;
+            foreach (String word in words) {
+                Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
+                Console.WriteLine(word);
+                y++;
+            }
+            Console.SetCursorPosition(0, y + 18);
+            Console.Write("Input menu number to continue: ");
             return Console.ReadLine();
         }
 
         public String CreatePlayerScreen() {
             Console.Clear();
-            Thread.Sleep(250);
+            Thread.Sleep(100);
             Console.SetCursorPosition(0, 0);
             Console.Write("Enter player's name: ");
             return Console.ReadLine();

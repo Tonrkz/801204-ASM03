@@ -14,7 +14,6 @@ namespace ASM03_651310297 {
                 return instance;
             }
         }
-        public readonly string[] locations = new string[] { "TOWN", "PLAIN", "FOREST", "VOLCANO", "CASTLE" };
         public readonly bool[,] adjacencyMatrix = new bool[,] { { true, true, true, false, false },
                                                                 { true, true, false, true, false },
                                                                 { true, false, true, true, false },
@@ -37,8 +36,6 @@ namespace ASM03_651310297 {
                 y++;
             }
             Console.SetCursorPosition(0, y + 15);
-            Console.Write("Input number to continue: ");
-            Console.ReadLine();
         }
 
         public void UpdateMap() {

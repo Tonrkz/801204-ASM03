@@ -27,6 +27,8 @@ namespace ASM03_651310297 {
             throw new System.NotImplementedException();
         }
 
+        /*public abstract String MoveEnterStatusSaveExit();*/
+
         public Users(string n = "Player")
         {
             this.name = n;
