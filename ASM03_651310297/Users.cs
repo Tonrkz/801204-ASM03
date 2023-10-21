@@ -15,23 +15,37 @@ namespace ASM03_651310297 {
         public Byte level { get; set; }
         public int EXP { get; set; }
         public int maxEXP { get; set; }
-        public Byte ATK { get; set; }
-        public Byte DEF { get; set; }
-        public Byte AGI { get; set; }
+        public int ATK { get; set; }
+        public int DEF { get; set; }
+        public int AGI { get; set; }
         public int gold { get; set; }
         public Byte position { get; set; }
         public bool isEscape { get; set; }
 
-        public void LevelUp() {
+        public void LevelUp(int top) {
             if (EXP >= maxEXP) {
                 EXP -= maxEXP;
-                maxEXP += 5;
+                maxEXP += 10;
                 level++;
+                if (level > 255) {
+                    level = 255;
+                }
                 maxHP += 5;
                 HP = maxHP;
                 ATK += 5;
+
+                if (ATK > 255) {
+                    ATK = 255;
+                }
                 DEF += 5;
+                if (DEF > 255) {
+                    DEF = 255;
+                }
                 AGI += 5;
+                if (AGI > 255) {
+                    AGI = 255;
+                }
+                Console.SetCursorPosition((Console.WindowWidth - "You leveled up!".Length) / 2, top);
                 Console.WriteLine("You leveled up!");
             }
         }
@@ -48,10 +62,14 @@ namespace ASM03_651310297 {
             else if (input == "3" || input.Contains("Status", StringComparison.OrdinalIgnoreCase)) {
                 Console.WriteLine();
                 Status();
+                Map.Instance.ShowBattle(aMonster.name);
+                ChooseBattleAction(aMonster);
             }
             else {
-                Console.WriteLine("Invalid input!");
+                Console.WriteLine("\nInvalid input!");
                 GameManager.Instance.PressEnterToContinue();
+                Map.Instance.ShowBattle(aMonster.name);
+                ChooseBattleAction(aMonster);
             }
         }
 
@@ -60,7 +78,7 @@ namespace ASM03_651310297 {
             int rng = aRandom.Next(0, 100);
             rng += deltaAGI;
             if (rng < 10) {
-                Console.WriteLine("You missed!");
+                Console.WriteLine("\nYou missed!");
                 GameManager.Instance.PressEnterToContinue();
             }
             else if (rng > 90) {
@@ -73,7 +91,7 @@ namespace ASM03_651310297 {
             else {
                 rng = aRandom.Next(-2 * level, 3 * level);
                 aMonster.HP -= ATK + rng;
-                Console.WriteLine($"You dealt {ATK + rng} damage to {aMonster.name}!");
+                Console.WriteLine($"\nYou dealt {ATK + rng} damage to {aMonster.name}!");
                 GameManager.Instance.PressEnterToContinue();
             }
         }
@@ -83,12 +101,12 @@ namespace ASM03_651310297 {
             int rng = aRandom.Next(1, 101);
             rng += deltaAGI;
             if (rng < 50) {
-                Console.WriteLine("You failed to escape!");
+                Console.WriteLine("\nYou failed to escape!");
                 GameManager.Instance.PressEnterToContinue();
                 isEscape = false;
             }
             else {
-                Console.WriteLine("You escaped!");
+                Console.WriteLine("\nYou escaped!");
                 GameManager.Instance.PressEnterToContinue();
                 isEscape = true;
             }

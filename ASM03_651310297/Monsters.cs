@@ -47,7 +47,21 @@ namespace ASM03_651310297 {
         }
 
         public void Dead() {
-
+            String[] words = new String[] { "You defeated the slime!", $"You gained {EXP} EXP and {gold} gold!" };
+            Players.Instance.EXP += EXP;
+            Players.Instance.gold += gold;
+            Console.Clear();
+            Thread.Sleep(250);
+            int y = Console.WindowHeight / 2 - 10;
+            foreach (var word in words) {
+                Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
+                Console.WriteLine(word);
+                y++;
+            }
+            if (Players.Instance.EXP >= Players.Instance.maxEXP) {
+                Players.Instance.LevelUp(y);
+            }
+            GameManager.Instance.PressEnterToContinue();
         }
     }
 }
