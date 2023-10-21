@@ -15,58 +15,6 @@ namespace ASM03_651310297 {
             }
         }
 
-        public override String MoveEnterStatusSaveExit() {
-            Console.Write("Input adjacent place number to move into and enter it.\nInput 'Enter' to enter current place.\nInput 'Status' to view status menu.\nInput 'Save' to save game.\nInput 'Exit' to quit game\nInput: ");
-            string input = Console.ReadLine();
-            if (input == "1" || input.Contains("Town", StringComparison.OrdinalIgnoreCase)) {
-                if (Map.Instance.adjacencyMatrix[position, 0]) {
-                    position = 0;
-                    return "Enter";
-                }
-            }
-            else if (input == "2" || input.Contains("Plain", StringComparison.OrdinalIgnoreCase)) {
-                if (Map.Instance.adjacencyMatrix[position, 1]) {
-                    position = 1;
-                    return "Enter";
-                }
-            }
-            else if (input == "3" || input.Contains("Forest", StringComparison.OrdinalIgnoreCase)) {
-                if (Map.Instance.adjacencyMatrix[position, 2]) {
-                    position = 2;
-                    return "Enter";
-                }
-            }
-            else if (input == "4" || input.Contains("Volcano", StringComparison.OrdinalIgnoreCase)) {
-                if (Map.Instance.adjacencyMatrix[position, 3]) {
-                    position = 3;
-                    return "Enter";
-                }
-            }
-            else if (input == "5" || input.Contains("Castle", StringComparison.OrdinalIgnoreCase)) {
-                if (Map.Instance.adjacencyMatrix[position, 4]) {
-                    position = 4;
-                    return "Enter";
-                }
-            }
-            else if (input.Contains("Enter", StringComparison.OrdinalIgnoreCase) || input == "") {
-                return "Enter";
-            }
-            else if (input.Contains("Status", StringComparison.OrdinalIgnoreCase)) {
-                return "Status";
-            }
-            else if (input.Contains("Save", StringComparison.OrdinalIgnoreCase)) {
-                return "Save";
-            }
-            else if (input.Contains("Exit", StringComparison.OrdinalIgnoreCase)) {
-                return "Exit";
-            }
-            else {
-                return "Invalid";
-            }
-            return "Invalid";
-        }
-
-
         Players(string a) : base(a) {
             name = a;
             HP = 10;

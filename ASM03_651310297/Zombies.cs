@@ -6,11 +6,12 @@ using System.Text;
 namespace ASM03_651310297 {
     public class Zombies : Monsters {
         public Zombies() {
+            name = "Zombie";
             HP = 50;
-            ATK = 5;
-            DEF = 5;
-            AGI = 5;
-            EXP = 25;
+            ATK = 10;
+            DEF = 10;
+            AGI = 10;
+            EXP = 50;
             gold = 50;
         }
     }

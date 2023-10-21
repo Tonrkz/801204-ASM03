@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Data.Common;
+using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
 namespace ASM03_651310297 {
@@ -29,18 +30,12 @@ namespace ASM03_651310297 {
             String output = GameManager.Instance.StartScreen();
             if (output == "1") {
                 ActivateProgramState = CreatePlayerScreenState;
-                ActivateProgramState();
             }
             else if (output == "2") {
                 ActivateProgramState = LoadPlayerScreenState;
-                ActivateProgramState();
             }
             else if (output == "3") {
-                ActivateProgramState = ExitScreenState;
-                ActivateProgramState();
-            }
-            else {
-                ActivateProgramState();
+                ActivateProgramState = ExitGameState;
             }
         }
         static void CreatePlayerScreenState() {
@@ -61,8 +56,8 @@ namespace ASM03_651310297 {
                 List<XElement> playerList = XMLOperator.Instance.LoadPlayer().Elements("player").ToList();
                 foreach (XElement player in playerList) {
                     Console.WriteLine($"Name: {player.Attribute("name").Value}");
-                    Console.WriteLine($"HP: {player.Element("HP").Value}/{player.Element("maxHP").Value}");
                     Console.WriteLine($"Level: {player.Element("level").Value}");
+                    Console.WriteLine($"HP: {player.Element("HP").Value}/{player.Element("maxHP").Value}");
                     Console.WriteLine($"EXP: {player.Element("EXP").Value}/{player.Element("maxEXP").Value}");
                     Console.WriteLine($"Gold: {player.Element("gold").Value}\n");
                 }
@@ -73,15 +68,14 @@ namespace ASM03_651310297 {
                     Players.Instance.name = player.Attribute("name").Value;
                     Players.Instance.HP = int.Parse(player.Element("HP").Value);
                     Players.Instance.maxHP = int.Parse(player.Element("maxHP").Value);
-                    Players.Instance.level = int.Parse(player.Element("level").Value);
+                    Players.Instance.level = Byte.Parse(player.Element("level").Value);
                     Players.Instance.EXP = int.Parse(player.Element("EXP").Value);
                     Players.Instance.maxEXP = int.Parse(player.Element("maxEXP").Value);
-                    Players.Instance.ATK = int.Parse(player.Element("ATK").Value);
-                    Players.Instance.DEF = int.Parse(player.Element("DEF").Value);
-                    Players.Instance.AGI = int.Parse(player.Element("AGI").Value);
-                    Players.Instance.position = int.Parse(player.Element("position").Value);
+                    Players.Instance.ATK = Byte.Parse(player.Element("ATK").Value);
+                    Players.Instance.DEF = Byte.Parse(player.Element("DEF").Value);
+                    Players.Instance.AGI = Byte.Parse(player.Element("AGI").Value);
+                    Players.Instance.position = Byte.Parse(player.Element("position").Value);
                     Players.Instance.gold = int.Parse(player.Element("gold").Value);
-
                     choose = true;
                 }
                 else {
@@ -105,7 +99,7 @@ namespace ASM03_651310297 {
                 ActivateProgramState = SaveScreenState;
             }
             else if (state == "Exit") {
-                ActivateProgramState = ExitScreenState;
+                ActivateProgramState = ExitGameState;
             }
             else {
                 Console.WriteLine("Invalid input.");
@@ -117,14 +111,7 @@ namespace ASM03_651310297 {
             Console.Clear();
             Console.SetCursorPosition(0, 0);
             Thread.Sleep(100);
-            Console.WriteLine($"Name: {Players.Instance.name}");
-            Console.WriteLine($"HP: {Players.Instance.HP}/{Players.Instance.maxHP}");
-            Console.WriteLine($"Level: {Players.Instance.level}");
-            Console.WriteLine($"EXP: {Players.Instance.EXP}/{Players.Instance.maxEXP}");
-            Console.WriteLine($"ATK: {Players.Instance.ATK}");
-            Console.WriteLine($"DEF: {Players.Instance.DEF}");
-            Console.WriteLine($"AGI: {Players.Instance.AGI}");
-            Console.WriteLine($"Gold: {Players.Instance.gold}");
+            Players.Instance.Status();
             GameManager.Instance.PressEnterToContinue();
             ActivateProgramState = MapScreenState;
         }
@@ -133,14 +120,12 @@ namespace ASM03_651310297 {
             switch (Players.Instance.position) {
                 case 0:
                     ActivateProgramState = TownScreenState;
-                    ActivateProgramState();
                     break;
                 case 1:
                 case 2:
                 case 3:
                 case 4:
                     ActivateProgramState = BattleScreenState;
-                    ActivateProgramState();
                     break;
             }
         }
@@ -198,69 +183,74 @@ namespace ASM03_651310297 {
                     int rng = aRandom.Next(1, 101);
                     if (rng >= 85) {
                         BigSlimes aBigSlime = new BigSlimes();
+                        Players.Instance.isEscape = false;
                         while (aBigSlime.HP >= 0) {
-                            Console.Clear();
-                            Thread.Sleep(250);
-                            Sprites.Instance.PrintSprite(Sprites.Instance.bigSlime, 120, 12);
-                            Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
-                            Console.SetCursorPosition(0, 0);
-                            GameManager.Instance.PressEnterToContinue();
-                            ActivateProgramState = MapScreenState;
-                            break;
+                            Map.Instance.ShowBigSlimeBattle();
+                            Players.Instance.ChooseBattleAction(aBigSlime);
+                            if (Players.Instance.isEscape) {
+                                break;
+                            }
+                            Map.Instance.ShowBigSlimeBattle();
+                            aBigSlime.monsterAction();
                         }
+                        ActivateProgramState = MapScreenState;
                     }
                     else {
                         Slimes aSlime = new Slimes();
+                        Players.Instance.isEscape = false;
                         while (aSlime.HP >= 0) {
-                            Console.Clear();
-                            Thread.Sleep(250);
-                            Sprites.Instance.PrintSprite(Sprites.Instance.slime, 120, 30);
-                            Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
-                            Console.SetCursorPosition(0, 0);
-                            GameManager.Instance.PressEnterToContinue();
-                            ActivateProgramState = MapScreenState;
-                            break;
+                            Map.Instance.ShowSlimeBattle();
+                            Players.Instance.ChooseBattleAction(aSlime);
+                            if (Players.Instance.isEscape) {
+                                break;
+                            }
+                            Map.Instance.ShowSlimeBattle();
+                            aSlime.monsterAction();
                         }
+                        ActivateProgramState = MapScreenState;
                     }
                     break;
                 case 2:
                     Zombies aZombie = new Zombies();
+                    Players.Instance.isEscape = false;
                     while (aZombie.HP >= 0) {
-                        Console.Clear();
-                        Thread.Sleep(250);
-                        Sprites.Instance.PrintSprite(Sprites.Instance.zombie, 120, 21);
-                        Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
-                        Console.SetCursorPosition(0, 0);
-                        GameManager.Instance.PressEnterToContinue();
-                        ActivateProgramState = MapScreenState;
-                        break;
+                        Map.Instance.ShowZombieBattle();
+                        Players.Instance.ChooseBattleAction(aZombie);
+                        if (Players.Instance.isEscape) {
+                            break;
+                        }
+                        Map.Instance.ShowZombieBattle();
+                        aZombie.monsterAction();
                     }
+                    ActivateProgramState = MapScreenState;
                     break;
                 case 3:
                     Phoenixes aPhoenix = new Phoenixes();
+                    Players.Instance.isEscape = false;
                     while (aPhoenix.HP >= 0) {
-                        Console.Clear();
-                        Thread.Sleep(250);
-                        Sprites.Instance.PrintSprite(Sprites.Instance.phoenix, 120, 2);
-                        Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
-                        Console.SetCursorPosition(0, 0);
-                        GameManager.Instance.PressEnterToContinue();
-                        ActivateProgramState = MapScreenState;
-                        break;
+                        Map.Instance.ShowPhoenixBattle();
+                        Players.Instance.ChooseBattleAction(aPhoenix);
+                        if (Players.Instance.isEscape) {
+                            break;
+                        }
+                        Map.Instance.ShowPhoenixBattle();
+                        aPhoenix.monsterAction();
                     }
+                    ActivateProgramState = MapScreenState;
                     break;
                 case 4:
                     Dragons aDragon = new Dragons();
+                    Players.Instance.isEscape = false;
                     while (aDragon.HP >= 0) {
-                        Console.Clear();
-                        Thread.Sleep(250);
-                        Sprites.Instance.PrintSprite(Sprites.Instance.dragon, 120, 1);
-                        Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
-                        Console.SetCursorPosition(0, 0);
-                        GameManager.Instance.PressEnterToContinue();
-                        ActivateProgramState = MapScreenState;
-                        break;
+                        Map.Instance.ShowDragonBattle();
+                        Players.Instance.ChooseBattleAction(aDragon);
+                        if (Players.Instance.isEscape) {
+                            break;
+                        }
+                        Map.Instance.ShowDragonBattle();
+                        aDragon.monsterAction();
                     }
+                    ActivateProgramState = MapScreenState;
                     break;
             }
         }
@@ -278,12 +268,21 @@ namespace ASM03_651310297 {
             Console.WriteLine($"DEF: {Players.Instance.DEF}");
             Console.WriteLine($"AGI: {Players.Instance.AGI}");
             Console.WriteLine($"Gold: {Players.Instance.gold}");
-            Console.WriteLine("\nSaved");
+            Console.WriteLine("\nSaved.");
             GameManager.Instance.PressEnterToContinue();
             ActivateProgramState = MapScreenState;
         }
-        static void ExitScreenState() {
+        static void ExitGameState() {
             gameRunning = false;
+            String[] words = new String[] { "Thank you for playing." };
+            Console.Clear();
+            Thread.Sleep(250);
+            int y = Console.WindowHeight / 2 - 10;
+            foreach (var word in words) {
+                Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
+                Console.WriteLine(word);
+                y++;
+            }
         }
 
         static void Main(string[] args) {

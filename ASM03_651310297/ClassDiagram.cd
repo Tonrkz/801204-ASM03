@@ -10,7 +10,7 @@
       </Delegate>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAEAAAAYAAoAAABAAAAIAQAEAABBRAAAAAA=</HashCode>
+      <HashCode>gAABAAAAgAEAAIAUCAoAAABAAAAIAQAEBABBRAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,21 +31,21 @@
   <Class Name="ASM03_651310297.Users">
     <Position X="5.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gEAAAQAAAAACgAABgAAEIAABQJEEAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>gEAAAQAEBIACgAAFgAAEIAABQJEEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Users.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Players">
-    <Position X="5.5" Y="11" Width="1.5" />
+    <Position X="8.25" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAABAAAAAQAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Players.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Monsters">
-    <Position X="5.25" Y="0.75" Width="1.5" />
+    <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gEAAAQAAAAACgAAAAAAAAAAAQIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>gEAAAQAAAAACgAAEAAAAAAAAQIAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Monsters.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -94,7 +94,7 @@
   <Class Name="ASM03_651310297.XMLOperator">
     <Position X="14" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAgAAAAAAAAAgABAAAAAABAAAAAYAAAAAAAAAA=</HashCode>
       <FileName>XMLOperator.cs</FileName>
     </TypeIdentifier>
   </Class>

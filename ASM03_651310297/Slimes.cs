@@ -6,6 +6,7 @@ using System.Text;
 namespace ASM03_651310297 {
     public class Slimes : Monsters {
         public Slimes() {
+            name = "Slime";
             HP = 20;
             ATK = 2;
             DEF = 2;

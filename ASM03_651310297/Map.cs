@@ -82,5 +82,45 @@ namespace ASM03_651310297 {
                     break;
             }
         }
+
+        public void ShowBigSlimeBattle() {
+            Console.Clear();
+            Thread.Sleep(250);
+            Sprites.Instance.PrintSprite(Sprites.Instance.bigSlime, 120, 12);
+            Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
+            Console.SetCursorPosition(0, 41);
+        }
+
+        public void ShowSlimeBattle() {
+            Console.Clear();
+            Thread.Sleep(250);
+            Sprites.Instance.PrintSprite(Sprites.Instance.slime, 120, 30);
+            Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
+            Console.SetCursorPosition(0, 41);
+        }
+
+        public void ShowZombieBattle() {
+            Console.Clear();
+            Thread.Sleep(250);
+            Sprites.Instance.PrintSprite(Sprites.Instance.zombie, 120, 21);
+            Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
+            Console.SetCursorPosition(0, 41);
+        }
+
+        public void ShowPhoenixBattle() {
+            Console.Clear();
+            Thread.Sleep(250);
+            Sprites.Instance.PrintSprite(Sprites.Instance.phoenix, 120, 2);
+            Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
+            Console.SetCursorPosition(0, 41);
+        }
+
+        public void ShowDragonBattle() {
+            Console.Clear();
+            Thread.Sleep(250);
+            Sprites.Instance.PrintSprite(Sprites.Instance.dragon, 120, 1);
+            Sprites.Instance.PrintSprite(Sprites.Instance.player, 50, 18);
+            Console.SetCursorPosition(0, 41);
+        }
     }
 }

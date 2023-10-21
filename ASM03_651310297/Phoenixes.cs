@@ -6,12 +6,13 @@ using System.Text;
 namespace ASM03_651310297 {
     public class Phoenixes : Monsters {
         public Phoenixes() {
-            HP = 200;
-            ATK = 20;
-            DEF = 20;
-            AGI = 20;
-            EXP = 100;
-            gold = 200;
+            name = "Phoenix";
+            HP = 500;
+            ATK = 50;
+            DEF = 50;
+            AGI = 50;
+            EXP = 250;
+            gold = 250;
         }
     }
 }
