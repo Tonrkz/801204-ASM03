@@ -9,18 +9,19 @@ namespace ASM03_651310297 {
         public Dragons() {
             name = "Dragon";
             HP = 1000;
-            ATK = 100;
-            DEF = 100;
-            AGI = 100;
+            maxHP = 2000;
+            ATK = 255;
+            DEF = 255;
+            AGI = 255;
             EXP = 500;
             gold = 500;
             isEscape = false;
         }
 
-        public void Escape() {
+        public override void Escape() {
             int deltaAGI = AGI - Players.Instance.AGI;
             int rng = aRandom.Next(0, 50);
-            int tempATK = ATK * (ATK + (rng / 100));
+            int tempATK = ATK + (ATK * (rng / 100));
             Console.WriteLine("It burns you with its flame!\n");
             rng = aRandom.Next(1, 101);
             rng += deltaAGI;

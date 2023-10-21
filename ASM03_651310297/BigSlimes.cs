@@ -7,10 +7,11 @@ namespace ASM03_651310297 {
     public class BigSlimes : Monsters {
         public BigSlimes() {
             name = "Big Slime";
-            HP = 100;
-            ATK = 30;
-            DEF = 30;
-            AGI = 30;
+            HP = 200;
+            maxHP = 200;
+            ATK = 50;
+            DEF = 50;
+            AGI = 50;
             EXP = 100;
             gold = 100;
             isEscape = false;

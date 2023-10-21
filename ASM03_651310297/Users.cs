@@ -25,23 +25,23 @@ namespace ASM03_651310297 {
         public void LevelUp(int top) {
             if (EXP >= maxEXP) {
                 EXP -= maxEXP;
-                maxEXP += 10;
+                maxEXP += 15;
                 level++;
                 if (level > 255) {
                     level = 255;
                 }
                 maxHP += 5;
                 HP = maxHP;
-                ATK += 5;
+                ATK += 2;
 
                 if (ATK > 255) {
                     ATK = 255;
                 }
-                DEF += 5;
+                DEF += 2;
                 if (DEF > 255) {
                     DEF = 255;
                 }
-                AGI += 5;
+                AGI += 2;
                 if (AGI > 255) {
                     AGI = 255;
                 }
@@ -82,14 +82,16 @@ namespace ASM03_651310297 {
                 GameManager.Instance.PressEnterToContinue();
             }
             else if (rng > 90) {
-                rng = aRandom.Next(-2 * level, 3 * level);
-                Console.WriteLine("Critical hit!\n");
+                rng = aRandom.Next(-5, 5);
+                Console.WriteLine("\nCritical hit!");
+                rng = ATK * rng / 100;
                 aMonster.HP -= (ATK + rng) * 2;
-                Console.WriteLine($"You dealt {(ATK + rng) * 2} damage to {aMonster.name}!");
+                Console.WriteLine($"\nYou dealt {(ATK + rng) * 2} damage to {aMonster.name}!");
                 GameManager.Instance.PressEnterToContinue();
             }
             else {
-                rng = aRandom.Next(-2 * level, 3 * level);
+                rng = aRandom.Next(-5, 5);
+                rng = ATK * rng / 100;
                 aMonster.HP -= ATK + rng;
                 Console.WriteLine($"\nYou dealt {ATK + rng} damage to {aMonster.name}!");
                 GameManager.Instance.PressEnterToContinue();

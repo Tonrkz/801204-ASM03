@@ -8,6 +8,7 @@ namespace ASM03_651310297 {
         public Slimes() {
             name = "Slime";
             HP = 20;
+            maxHP = 20;
             ATK = 2;
             DEF = 2;
             AGI = 2;

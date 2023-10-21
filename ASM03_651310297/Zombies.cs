@@ -7,10 +7,11 @@ namespace ASM03_651310297 {
     public class Zombies : Monsters {
         public Zombies() {
             name = "Zombie";
-            HP = 50;
-            ATK = 10;
-            DEF = 10;
-            AGI = 10;
+            HP = 80;
+            maxHP = 80;
+            ATK = 15;
+            DEF = 15;
+            AGI = 15;
             EXP = 50;
             gold = 50;
             isEscape = false;

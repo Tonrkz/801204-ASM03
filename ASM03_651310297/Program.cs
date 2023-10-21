@@ -27,6 +27,7 @@ namespace ASM03_651310297 {
             ActivateProgramState = StartScreenState;
         }
         static void StartScreenState() {
+            Console.Clear();
             Thread.Sleep(100);
             String output = GameManager.Instance.StartScreen();
             if (output == "1") {
@@ -43,13 +44,16 @@ namespace ASM03_651310297 {
             String name = GameManager.Instance.CreatePlayerScreen();
             Console.Write("Are you sure with that name? (Y/n): ");
             String input = Console.ReadLine();
-            if (input.Contains("y", StringComparison.OrdinalIgnoreCase) || input == "") {
+            if (input == "y" || input == "Y" || input == "") {
                 if (name == "") {
                     name = "Player";
                 }
                 Players.Instance.name = name;
+                ActivateProgramState = MapScreenState;
             }
-            ActivateProgramState = MapScreenState;
+            else {
+                ActivateProgramState = StartScreenState;
+            }
         }
         static void LoadPlayerScreenState() {
             bool choose = false;
@@ -199,6 +203,7 @@ namespace ASM03_651310297 {
                                 break;
                             }
                             Map.Instance.ShowBattle(aBigSlime.name);
+                            aBigSlime.ChooseBattleAction();
                             aBigSlime.monsterAction();
                             if (aBigSlime.isEscape) {
                                 break;
@@ -220,6 +225,7 @@ namespace ASM03_651310297 {
                                 break;
                             }
                             Map.Instance.ShowBattle(aSlime.name);
+                            aSlime.ChooseBattleAction();
                             aSlime.monsterAction();
                             if (aSlime.isEscape) {
                                 break;
@@ -242,6 +248,7 @@ namespace ASM03_651310297 {
                             break;
                         }
                         Map.Instance.ShowBattle(aZombie.name);
+                        aZombie.ChooseBattleAction();
                         aZombie.monsterAction();
                         if (aZombie.isEscape) {
                             break;
@@ -263,6 +270,7 @@ namespace ASM03_651310297 {
                             break;
                         }
                         Map.Instance.ShowBattle(aPhoenix.name);
+                        aPhoenix.ChooseBattleAction();
                         aPhoenix.monsterAction();
                         if (aPhoenix.isEscape) {
                             break;
@@ -289,6 +297,8 @@ namespace ASM03_651310297 {
                             break;
                         }
                         Map.Instance.ShowBattle(aDragon.name);
+                        aDragon.ChooseBattleAction();
+                        aDragon.monsterAction();
                     }
                     ActivateProgramState = MapScreenState;
                     break;

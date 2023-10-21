@@ -7,12 +7,13 @@ namespace ASM03_651310297 {
     public class Phoenixes : Monsters {
         public Phoenixes() {
             name = "Phoenix";
-            HP = 500;
-            ATK = 50;
-            DEF = 50;
-            AGI = 50;
-            EXP = 250;
-            gold = 250;
+            HP = 1000;
+            maxHP = 1000;
+            ATK = 150;
+            DEF = 150;
+            AGI = 150;
+            EXP = 500;
+            gold = 500;
             isEscape = false;
         }
     }

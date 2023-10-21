@@ -9,11 +9,12 @@ namespace ASM03_651310297 {
         public delegate void MonsterAction();
         public MonsterAction monsterAction;
         public Monsters() {
-            monsterAction = Escape;
+            monsterAction = Attack;
         }
         Random aRandom = new Random();
         public String name { get; set; }
         public int HP { get; set; }
+        public int maxHP { get; set; }
 
         public Byte ATK { get; set; }
 
@@ -25,6 +26,16 @@ namespace ASM03_651310297 {
 
         public int gold { get; set; }
         public bool isEscape { get; set; }
+
+        public void ChooseBattleAction() {
+            int rng = aRandom.Next(1, 101);
+            if (rng < 21 && HP <= maxHP / 2) {
+                monsterAction = Escape;
+            }
+            else {
+                monsterAction = Attack;
+            }
+        }
 
         public void Attack() {
             int deltaAGI = AGI - Players.Instance.AGI;
@@ -50,7 +61,7 @@ namespace ASM03_651310297 {
             }
         }
 
-        public void Escape() {
+        public virtual void Escape() {
             int deltaAGI = AGI - Players.Instance.AGI;
             int rng = aRandom.Next(1, 101);
             rng += deltaAGI;
