@@ -29,7 +29,7 @@ namespace ASM03_651310297 {
 
         public void ChooseBattleAction() {
             int rng = aRandom.Next(1, 101);
-            if (rng < 21 && HP <= maxHP / 2) {
+            if (rng < 26 && HP <= maxHP / 2) {
                 monsterAction = Escape;
             }
             else {
@@ -40,6 +40,7 @@ namespace ASM03_651310297 {
         public void Attack() {
             int deltaAGI = AGI - Players.Instance.AGI;
             int rng = aRandom.Next(0, 100);
+            int damage = 0;
             Console.WriteLine("It attacks!\n");
             rng += deltaAGI;
             if (rng < 15) {
@@ -49,14 +50,26 @@ namespace ASM03_651310297 {
             else if (rng > 89) {
                 rng = aRandom.Next(-5, 5);
                 Console.WriteLine("Critical hit!\n");
-                Players.Instance.HP -= (ATK + (ATK * rng / 100)) * 2;
-                Console.WriteLine($"It dealt {(ATK + (ATK * rng / 100)) * 2} damage to you!");
+                damage = (ATK + (ATK * rng / 100)) * 2;
+                rng = aRandom.Next(0, 11) / 100;
+                damage -= Players.Instance.DEF * rng;
+                if (damage < 0) {
+                    damage = 0;
+                }
+                Players.Instance.HP -= damage;
+                Console.WriteLine($"It dealt {damage} damage to you!");
                 GameManager.Instance.PressEnterToContinue();
             }
             else {
                 rng = aRandom.Next(-5, 5);
-                Players.Instance.HP -= ATK + (ATK * rng / 100);
-                Console.WriteLine($"It dealt {ATK + (ATK * rng / 100)} damage to you!");
+                damage = ATK + (ATK * rng / 100);
+                rng = aRandom.Next(25, 51) / 100;
+                damage -= Players.Instance.DEF * rng;
+                if (damage < 0) {
+                    damage = 0;
+                }
+                Players.Instance.HP -= damage;
+                Console.WriteLine($"It dealt {damage} damage to you!");
                 GameManager.Instance.PressEnterToContinue();
             }
         }

@@ -76,6 +76,7 @@ namespace ASM03_651310297 {
         public void Attack(Monsters aMonster) {
             int deltaAGI = AGI - aMonster.AGI;
             int rng = aRandom.Next(0, 100);
+            int damage = 0;
             rng += deltaAGI;
             if (rng < 10) {
                 Console.WriteLine("\nYou missed!");
@@ -85,15 +86,27 @@ namespace ASM03_651310297 {
                 rng = aRandom.Next(-5, 5);
                 Console.WriteLine("\nCritical hit!");
                 rng = ATK * rng / 100;
-                aMonster.HP -= (ATK + rng) * 2;
-                Console.WriteLine($"\nYou dealt {(ATK + rng) * 2} damage to {aMonster.name}!");
+                damage = (ATK + rng) * 2;
+                rng = aRandom.Next(0, 11) / 100;
+                damage -= aMonster.DEF * rng;
+                if (damage < 0) {
+                    damage = 0;
+                }
+                aMonster.HP -= damage;
+                Console.WriteLine($"\nYou dealt {damage} damage to {aMonster.name}!");
                 GameManager.Instance.PressEnterToContinue();
             }
             else {
                 rng = aRandom.Next(-5, 5);
                 rng = ATK * rng / 100;
-                aMonster.HP -= ATK + rng;
-                Console.WriteLine($"\nYou dealt {ATK + rng} damage to {aMonster.name}!");
+                damage = ATK + rng;
+                rng = aRandom.Next(25, 51) / 100;
+                damage -= aMonster.DEF * rng;
+                if (damage < 0) {
+                    damage = 0;
+                }
+                aMonster.HP -= damage;
+                Console.WriteLine($"\nYou dealt {damage} damage to {aMonster.name}!");
                 GameManager.Instance.PressEnterToContinue();
             }
         }
