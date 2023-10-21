@@ -19,7 +19,7 @@ namespace ASM03_651310297 {
         String pathToPlayersXML = "Players.xml";
         XElement players;
         public XMLOperator() {
-              players = XElement.Load(pathToPlayersXML);
+            players = XElement.Load(pathToPlayersXML);
         }
 
         public void SavePlayer(bool dragonDead) {
@@ -37,14 +37,22 @@ namespace ASM03_651310297 {
                                                new XElement("AGI", Players.Instance.AGI),
                                                new XElement("position", Players.Instance.position),
                                                new XElement("gold", Players.Instance.gold),
-                                               new XElement("swordID", 31),
-                                               new XElement("shieldID", 5),
+                                               new XElement("swordID", Players.Instance.swordID),
+                                               new XElement("shieldID", Players.Instance.shieldID),
                                                new XElement("dragonDefeat", dragonDead)));
             players.Save(pathToPlayersXML);
         }
 
         public XElement LoadPlayer() {
             return players;
+        }
+
+        public XElement LoadSwords() {
+            return XElement.Load("Swords.xml");
+        }
+
+        public XElement LoadShields() {
+            return XElement.Load("Shields.xml");
         }
     }
 }

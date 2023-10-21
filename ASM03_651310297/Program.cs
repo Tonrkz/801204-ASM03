@@ -84,7 +84,16 @@ namespace ASM03_651310297 {
                     Players.Instance.AGI = Byte.Parse(player.Element("AGI").Value);
                     Players.Instance.position = Byte.Parse(player.Element("position").Value);
                     Players.Instance.gold = int.Parse(player.Element("gold").Value);
+                    Players.Instance.swordID = Byte.Parse(player.Element("swordID").Value);
+                    Players.Instance.shieldID = Byte.Parse(player.Element("shieldID").Value);
                     dragonDead = bool.Parse(player.Element("dragonDefeat").Value);
+
+                    XElement chosenSword = XMLOperator.Instance.LoadSwords().Elements("sword").Where(item => item.Element("ID").Value == player.Element("swordID").Value).FirstOrDefault();
+
+                    Players.Instance.sword = new Swords(byte.Parse(chosenSword.Element("ID").Value), chosenSword.Element("name").Value, int.Parse(chosenSword.Element("ATK").Value), int.Parse(chosenSword.Element("DEF").Value), int.Parse(chosenSword.Element("AGI").Value), int.Parse(chosenSword.Element("price").Value));
+
+                    XElement chosenShield = XMLOperator.Instance.LoadShields().Elements("shield").Where(item => item.Element("ID").Value == player.Element("shieldID").Value).FirstOrDefault();
+                    Players.Instance.shield = new Shields(byte.Parse(chosenShield.Element("ID").Value), chosenShield.Element("name").Value, int.Parse(chosenShield.Element("ATK").Value), int.Parse(chosenShield.Element("DEF").Value), int.Parse(chosenShield.Element("AGI").Value), int.Parse(chosenShield.Element("price").Value));
                     choose = true;
                 }
                 else {
@@ -168,7 +177,13 @@ namespace ASM03_651310297 {
         }
 
         static void ShopScreenState() {
+            Shop.Instance.inShop = true;
+            while (Shop.Instance.inShop) {
+                Shop.Instance.shopState();
+            }
+            ActivateProgramState = TownScreenState;
         }
+
         static void InnScreenState() {
             String[] words = new String[] { "You have a fully sleep. zzZZ..", "HP restores to its max." };
             Console.Clear();

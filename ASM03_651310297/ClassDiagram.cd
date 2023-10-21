@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ASM03_651310297.Program">
-    <Position X="15.75" Y="0.75" Width="1.5" />
+    <Position X="15.75" Y="0.5" Width="1.5" />
     <NestedTypes>
       <Delegate Name="ASM03_651310297.Program.State" Collapsed="true">
         <TypeIdentifier>
@@ -10,33 +10,33 @@
       </Delegate>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>gAABAAAAgAEAAIAUCAoAAABAAAAIAQAEBABBRAAAAAA=</HashCode>
+      <HashCode>gAABAAAAgAEAAIAUCAoAAEBAAAAIAYAEBABBRAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Sprites">
-    <Position X="12.25" Y="3.75" Width="1.5" />
+    <Position X="8.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQIAAAAAAEAAAAAAIAAAAAAABAQAABQAIAAAAAAAA=</HashCode>
       <FileName>Sprites.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.GameManager">
-    <Position X="12.25" Y="0.75" Width="1.5" />
+    <Position X="12.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAhABAAABAEAAAQAAAACAAAAA=</HashCode>
       <FileName>GameManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Users">
-    <Position X="5.5" Y="5.75" Width="1.5" />
+    <Position X="14" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gEAAAQAEBIACgAAFgAAEIAABQJEEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>gEAAAQAEBIACgAAFgAAEIAABQJEEAAAAAAAAAAIAAAA=</HashCode>
       <FileName>Users.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Players">
-    <Position X="8.25" Y="8" Width="1.5" />
+    <Position X="11.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Players.cs</FileName>
@@ -44,76 +44,83 @@
   </Class>
   <Class Name="ASM03_651310297.Monsters">
     <Position X="5.25" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="ASM03_651310297.Monsters.MonsterAction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Monsters.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>gEAAAQAAAAACgAAEAAAAAAAAQIAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>gEAAAQAABIACgAAEAAAAAAAAQJAEAACAAAAACAIAAAA=</HashCode>
       <FileName>Monsters.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Slimes">
-    <Position X="3" Y="4" Width="1.5" />
+    <Position X="3" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Slimes.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Zombies">
-    <Position X="5.25" Y="4" Width="1.5" />
+    <Position X="5.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Zombies.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Phoenixes">
-    <Position X="7.5" Y="4" Width="1.5" />
+    <Position X="7.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Phoenixes.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Dragons">
-    <Position X="9.75" Y="4" Width="1.5" />
+    <Position X="9.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAIAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dragons.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Map">
-    <Position X="14" Y="0.75" Width="1.5" />
+    <Position X="14" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAIAAAAAAAAAAAAAAAABAAAAAUIAAAAAAAAA=</HashCode>
+      <HashCode>AAAAEAACAIAAAAAAAAAAAAAAAABAAAAAUIAAAAAAAAA=</HashCode>
       <FileName>Map.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.BigSlimes">
-    <Position X="0.75" Y="4" Width="1.5" />
+    <Position X="0.75" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BigSlimes.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.XMLOperator">
-    <Position X="14" Y="3.75" Width="1.5" />
+    <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAAAAAAAgABAAAAAABAAAAAYAAAAAAAAAA=</HashCode>
       <FileName>XMLOperator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Equipments">
-    <Position X="1.75" Y="5.75" Width="1.5" />
+    <Position X="1.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>iAABAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>gEABAgAAAAACgAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Equipments.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Swords">
-    <Position X="0.5" Y="8.25" Width="1.5" />
+    <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Swords.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ASM03_651310297.Shields">
-    <Position X="2.75" Y="8.25" Width="1.5" />
+    <Position X="3" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Shields.cs</FileName>

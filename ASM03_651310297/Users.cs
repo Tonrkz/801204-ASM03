@@ -8,7 +8,9 @@ namespace ASM03_651310297 {
     public abstract class Users {
         Random aRandom = new Random();
         public Swords sword { get; set; }
+        public int swordID { get; set; }
         public Shields shield { get; set; }
+        public int shieldID { get; set; }
         public String name { get; set; }
         public int HP { get; set; }
         public int maxHP { get; set; }
@@ -128,7 +130,7 @@ namespace ASM03_651310297 {
         }
 
         public void Status() {
-            Console.WriteLine($"Name: {name}\nHP: {HP}/{maxHP}\nLevel: {level}\nEXP: {EXP}/{maxEXP}\nATK: {ATK}\nDEF: {DEF}\nAGI: {AGI}\nGold: {gold}");
+            Console.WriteLine($"Name: {name}\nHP: {HP}/{maxHP}\nLevel: {level}\nEXP: {EXP}/{maxEXP}\nATK: {ATK}\nDEF: {DEF}\nAGI: {AGI}\nGold: {gold}\n\nSword: {sword.name}\nShield: {shield.name}");
             GameManager.Instance.PressEnterToContinue();
         }
 
@@ -195,6 +197,8 @@ namespace ASM03_651310297 {
             AGI = 10;
             gold = 0;
             position = 0;
+            swordID = 0;
+            shieldID = 0;
         }
     }
 }
