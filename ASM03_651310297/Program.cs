@@ -6,6 +6,7 @@ namespace ASM03_651310297 {
     internal class Program {
         static Random aRandom = new Random();
         static bool gameRunning = true;
+        static bool dragonDead = false;
         delegate void State();
         static String state = "";
         static State ActivateProgramState;
@@ -79,6 +80,7 @@ namespace ASM03_651310297 {
                     Players.Instance.AGI = Byte.Parse(player.Element("AGI").Value);
                     Players.Instance.position = Byte.Parse(player.Element("position").Value);
                     Players.Instance.gold = int.Parse(player.Element("gold").Value);
+                    dragonDead = bool.Parse(player.Element("dragonDefeat").Value);
                     choose = true;
                 }
                 else {
@@ -229,10 +231,14 @@ namespace ASM03_651310297 {
                 case 2:
                     Zombies aZombie = new Zombies();
                     Players.Instance.isEscape = false;
-                    while (aZombie.HP >= 0) {
+                    while (aZombie.HP > 0) {
                         Map.Instance.ShowBattle(aZombie.name);
                         Players.Instance.ChooseBattleAction(aZombie);
                         if (Players.Instance.isEscape) {
+                            break;
+                        }
+                        if (aZombie.HP <= 0) {
+                            aZombie.Dead();
                             break;
                         }
                         Map.Instance.ShowBattle(aZombie.name);
@@ -252,6 +258,10 @@ namespace ASM03_651310297 {
                         if (Players.Instance.isEscape) {
                             break;
                         }
+                        if (aPhoenix.HP <= 0) {
+                            aPhoenix.Dead();
+                            break;
+                        }
                         Map.Instance.ShowBattle(aPhoenix.name);
                         aPhoenix.monsterAction();
                         if (aPhoenix.isEscape) {
@@ -263,10 +273,19 @@ namespace ASM03_651310297 {
                 case 4:
                     Dragons aDragon = new Dragons();
                     Players.Instance.isEscape = false;
+                    if (dragonDead) {
+                        ActivateProgramState = EndGameScreenState;
+                        break;
+                    }
                     while (aDragon.HP >= 0) {
                         Map.Instance.ShowBattle(aDragon.name);
                         Players.Instance.ChooseBattleAction(aDragon);
                         if (Players.Instance.isEscape) {
+                            break;
+                        }
+                        if (aDragon.HP <= 0) {
+                            aDragon.Dead();
+                            dragonDead = true;
                             break;
                         }
                         Map.Instance.ShowBattle(aDragon.name);
@@ -277,7 +296,7 @@ namespace ASM03_651310297 {
         }
 
         static void SaveScreenState() {
-            XMLOperator.Instance.SavePlayer();
+            XMLOperator.Instance.SavePlayer(dragonDead);
             Console.Clear();
             Console.SetCursorPosition(0, 0);
             Thread.Sleep(100);
@@ -293,6 +312,22 @@ namespace ASM03_651310297 {
             GameManager.Instance.PressEnterToContinue();
             ActivateProgramState = MapScreenState;
         }
+
+        static void EndGameScreenState() {
+            String[] words = new String[] { "You have defeated the Dragon.", "There is no dragon anymore." };
+            Console.Clear();
+            Thread.Sleep(250);
+            int y = Console.WindowHeight / 2 - 10;
+            foreach (var word in words) {
+                Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
+                Console.WriteLine(word);
+                y++;
+            }
+            Console.SetCursorPosition(0, y + 13);
+            GameManager.Instance.PressEnterToContinue();
+            ActivateProgramState = MapScreenState;
+        }
+
         static void ExitGameState() {
             gameRunning = false;
             String[] words = new String[] { "Thank you for playing." };

@@ -78,7 +78,7 @@ namespace ASM03_651310297 {
                 Console.WriteLine(word);
                 y++;
             }
-            if (Players.Instance.EXP >= Players.Instance.maxEXP) {
+            while (Players.Instance.EXP >= Players.Instance.maxEXP) {
                 Players.Instance.LevelUp(y);
             }
             GameManager.Instance.PressEnterToContinue();

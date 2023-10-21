@@ -22,7 +22,7 @@ namespace ASM03_651310297 {
               players = XElement.Load(pathToPlayersXML);
         }
 
-        public void SavePlayer() {
+        public void SavePlayer(bool dragonDead) {
             if (players.Elements("player").Any(item => item.Attribute("name").Value == Players.Instance.name)) {
                 players.Elements("player").Where(item => item.Attribute("name").Value == Players.Instance.name).Remove();
             }
@@ -38,7 +38,8 @@ namespace ASM03_651310297 {
                                                new XElement("position", Players.Instance.position),
                                                new XElement("gold", Players.Instance.gold),
                                                new XElement("swordID", 31),
-                                               new XElement("shieldID", 5)));
+                                               new XElement("shieldID", 5),
+                                               new XElement("dragonDefeat", dragonDead)));
             players.Save(pathToPlayersXML);
         }
 
