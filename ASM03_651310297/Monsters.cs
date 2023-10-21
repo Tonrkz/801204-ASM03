@@ -34,6 +34,13 @@ namespace ASM03_651310297 {
                 Console.WriteLine("Missed!");
                 GameManager.Instance.PressEnterToContinue();
             }
+            else if (rng > 89) {
+                rng = aRandom.Next(-5, 5);
+                Console.WriteLine("Critical hit!\n");
+                Players.Instance.HP -= (ATK + (ATK * rng / 100)) * 2;
+                Console.WriteLine($"It dealt {(ATK + (ATK * rng / 100)) * 2} damage to you!");
+                GameManager.Instance.PressEnterToContinue();
+            }
             else {
                 rng = aRandom.Next(-5, 5);
                 Players.Instance.HP -= ATK + (ATK * rng / 100);
@@ -43,7 +50,8 @@ namespace ASM03_651310297 {
         }
 
         public void Escape() {
-
+            int deltaAGI = AGI - Players.Instance.AGI;
+            int rng = aRandom.Next(0, 100);
         }
 
         public void Dead() {
