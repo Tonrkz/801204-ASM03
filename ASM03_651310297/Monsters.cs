@@ -9,7 +9,7 @@ namespace ASM03_651310297 {
         public delegate void MonsterAction();
         public MonsterAction monsterAction;
         public Monsters() {
-            monsterAction = Attack;
+            monsterAction = Escape;
         }
         Random aRandom = new Random();
         public String name { get; set; }
@@ -24,6 +24,7 @@ namespace ASM03_651310297 {
         public int EXP { get; set; }
 
         public int gold { get; set; }
+        public bool isEscape { get; set; }
 
         public void Attack() {
             int deltaAGI = AGI - Players.Instance.AGI;
@@ -51,11 +52,22 @@ namespace ASM03_651310297 {
 
         public void Escape() {
             int deltaAGI = AGI - Players.Instance.AGI;
-            int rng = aRandom.Next(0, 100);
+            int rng = aRandom.Next(1, 101);
+            rng += deltaAGI;
+            if (rng < 75) {
+                Console.WriteLine("It failed to escape!");
+                GameManager.Instance.PressEnterToContinue();
+                isEscape = false;
+            }
+            else {
+                Console.WriteLine("It escaped!");
+                GameManager.Instance.PressEnterToContinue();
+                isEscape = true;
+            }
         }
 
         public void Dead() {
-            String[] words = new String[] { "You defeated the slime!", $"You gained {EXP} EXP and {gold} gold!" };
+            String[] words = new String[] { $"You defeated the {name}!", $"You gained {EXP} EXP and {gold} gold!" };
             Players.Instance.EXP += EXP;
             Players.Instance.gold += gold;
             Console.Clear();

@@ -198,6 +198,9 @@ namespace ASM03_651310297 {
                             }
                             Map.Instance.ShowBattle(aBigSlime.name);
                             aBigSlime.monsterAction();
+                            if (aBigSlime.isEscape) {
+                                break;
+                            }
                         }
                         ActivateProgramState = MapScreenState;
                     }
@@ -216,6 +219,9 @@ namespace ASM03_651310297 {
                             }
                             Map.Instance.ShowBattle(aSlime.name);
                             aSlime.monsterAction();
+                            if (aSlime.isEscape) {
+                                break;
+                            }
                         }
                         ActivateProgramState = MapScreenState;
                     }
@@ -231,6 +237,9 @@ namespace ASM03_651310297 {
                         }
                         Map.Instance.ShowBattle(aZombie.name);
                         aZombie.monsterAction();
+                        if (aZombie.isEscape) {
+                            break;
+                        }
                     }
                     ActivateProgramState = MapScreenState;
                     break;
@@ -245,6 +254,9 @@ namespace ASM03_651310297 {
                         }
                         Map.Instance.ShowBattle(aPhoenix.name);
                         aPhoenix.monsterAction();
+                        if (aPhoenix.isEscape) {
+                            break;
+                        }
                     }
                     ActivateProgramState = MapScreenState;
                     break;
@@ -258,7 +270,6 @@ namespace ASM03_651310297 {
                             break;
                         }
                         Map.Instance.ShowBattle(aDragon.name);
-                        aDragon.monsterAction();
                     }
                     ActivateProgramState = MapScreenState;
                     break;

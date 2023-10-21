@@ -13,6 +13,7 @@ namespace ASM03_651310297 {
             AGI = 50;
             EXP = 250;
             gold = 250;
+            isEscape = false;
         }
     }
 }
