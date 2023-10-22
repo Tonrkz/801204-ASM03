@@ -129,6 +129,20 @@ namespace ASM03_651310297 {
             }
         }
 
+        public void Dead(Monsters aMonster) {
+            String[] words = new String[] { $"You were killed by the {aMonster.name}", "Dragon still remains.", "Waiting for hero to try him." };
+            Console.Clear();
+            Thread.Sleep(250);
+            int y = Console.WindowHeight / 2 - 10;
+            foreach (var word in words) {
+                Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
+                Console.WriteLine(word);
+                y++;
+            }
+            Console.SetCursorPosition(0, 41);
+            GameManager.Instance.PressEnterToContinue();
+        }
+
         public void Status() {
             Console.WriteLine($"Name: {name}\nHP: {HP}/{maxHP}\nLevel: {level}\nEXP: {EXP}/{maxEXP}\nATK: {ATK}\nDEF: {DEF}\nAGI: {AGI}\nGold: {gold}\n\nSword: {sword.name}\nShield: {shield.name}");
             GameManager.Instance.PressEnterToContinue();

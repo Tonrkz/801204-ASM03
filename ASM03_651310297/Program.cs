@@ -210,6 +210,11 @@ namespace ASM03_651310297 {
                         Players.Instance.isEscape = false;
                         while (aBigSlime.HP >= 0) {
                             Map.Instance.ShowBattle(aBigSlime.name);
+                            if (Players.Instance.HP <= 0) {
+                                Players.Instance.Dead(aBigSlime);
+                                ActivateProgramState = StoryScreenState;
+                                return;
+                            }
                             Players.Instance.ChooseBattleAction(aBigSlime);
                             if (Players.Instance.isEscape) {
                                 break;
@@ -232,6 +237,11 @@ namespace ASM03_651310297 {
                         Players.Instance.isEscape = false;
                         while (aSlime.HP > 0) {
                             Map.Instance.ShowBattle(aSlime.name);
+                            if (Players.Instance.HP <= 0) {
+                                Players.Instance.Dead(aSlime);
+                                ActivateProgramState = StoryScreenState;
+                                return;
+                            }
                             Players.Instance.ChooseBattleAction(aSlime);
                             if (Players.Instance.isEscape) {
                                 break;
@@ -255,6 +265,11 @@ namespace ASM03_651310297 {
                     Players.Instance.isEscape = false;
                     while (aZombie.HP > 0) {
                         Map.Instance.ShowBattle(aZombie.name);
+                        if (Players.Instance.HP <= 0) {
+                            Players.Instance.Dead(aZombie);
+                            ActivateProgramState = StoryScreenState;
+                            return;
+                        }
                         Players.Instance.ChooseBattleAction(aZombie);
                         if (Players.Instance.isEscape) {
                             break;
@@ -277,6 +292,11 @@ namespace ASM03_651310297 {
                     Players.Instance.isEscape = false;
                     while (aPhoenix.HP >= 0) {
                         Map.Instance.ShowBattle(aPhoenix.name);
+                        if (Players.Instance.HP <= 0) {
+                            Players.Instance.Dead(aPhoenix);
+                            ActivateProgramState = StoryScreenState;
+                            return;
+                        }
                         Players.Instance.ChooseBattleAction(aPhoenix);
                         if (Players.Instance.isEscape) {
                             break;
@@ -303,6 +323,11 @@ namespace ASM03_651310297 {
                     }
                     while (aDragon.HP >= 0) {
                         Map.Instance.ShowBattle(aDragon.name);
+                        if (Players.Instance.HP <= 0) {
+                            Players.Instance.Dead(aDragon);
+                            ActivateProgramState = StoryScreenState;
+                            return;
+                        }
                         Players.Instance.ChooseBattleAction(aDragon);
                         if (Players.Instance.isEscape) {
                             break;
