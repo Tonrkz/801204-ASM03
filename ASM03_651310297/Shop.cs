@@ -45,6 +45,7 @@ namespace ASM03_651310297 {
                     ShowSwords();
                     break;
                 case "2":
+                    ShowShields();
                     break;
                 case "3":
                     inShop = false;
@@ -55,7 +56,7 @@ namespace ASM03_651310297 {
             }
         }
 
-        public void ShowSwords() {
+        void ShowSwords() {
             Console.Clear();
             Thread.Sleep(100);
             for (int i = 1 ; i < 6 ; i++) {
@@ -115,6 +116,69 @@ namespace ASM03_651310297 {
                 Console.WriteLine("Invalid input!");
                 GameManager.Instance.PressEnterToContinue();
                 shopState = ShowSwords;
+            }
+        }
+
+        void ShowShields() {
+            Console.Clear();
+            Thread.Sleep(100);
+            for (int i = 1 ; i < 6 ; i++) {
+                XElement shield = shieldList[i];
+                Console.WriteLine($"Name: {shield.Element("name").Value}\n" +
+                                                     $"ATK: {shield.Element("ATK").Value}\n" +
+                                                                                      $"DEF: {shield.Element("DEF").Value}\n" +
+                                                                                                                       $"AGI: {shield.Element("AGI").Value}\n" +
+                                                                                                                                                        $"Price: {shield.Element("price").Value}\n");
+            }
+            int x = 30;
+            int y = 0;
+            for (int i = 6 ; i <= 10; i++) {
+                XElement shield = shieldList[i];
+                Console.SetCursorPosition(x, y);
+                Console.WriteLine($"Name: {shield.Element("name").Value}");
+                y++;
+                Console.SetCursorPosition(x, y);
+                Console.WriteLine($"ATK: {shield.Element("ATK").Value}");
+                y++;
+                Console.SetCursorPosition(x, y);
+                Console.WriteLine($"DEF: {shield.Element("DEF").Value}");
+                y++;
+                Console.SetCursorPosition(x, y);
+                Console.WriteLine($"AGI: {shield.Element("AGI").Value}");
+                y++;
+                Console.SetCursorPosition(x, y);
+                Console.WriteLine($"Price: {shield.Element("price").Value}");
+                y++;
+                Console.SetCursorPosition(x, y);
+                Console.WriteLine("\n");
+                y++;
+            }
+            Console.SetCursorPosition(0, 41);
+            Console.Write("Input shield's name to buy: ");
+            string input = Console.ReadLine();
+            XElement chosenShield = shieldList.Find(x => x.Element("name").Value == input);
+            if (chosenShield != null) {
+                if (Players.Instance.gold >= int.Parse(chosenShield.Element("price").Value)) {
+                    Players.Instance.gold -= int.Parse(chosenShield.Element("price").Value);
+                    Console.WriteLine($"\nYou bought {chosenShield.Element("name").Value}!");
+                    Console.WriteLine($"You have {Players.Instance.gold} gold left.");
+                    Console.WriteLine(chosenShield);
+                    GameManager.Instance.PressEnterToContinue();
+                    Players.Instance.shield.Dequip();
+                    Players.Instance.shield = new Shields(Byte.Parse(chosenShield.Attribute("id").Value), chosenShield.Element("name").Value, int.Parse(chosenShield.Element("ATK").Value), int.Parse(chosenShield.Element("DEF").Value), int.Parse(chosenShield.Element("AGI").Value), int.Parse(chosenShield.Element("price").Value));
+                    Players.Instance.shield.Equip();
+                    shopState = ShowShop;
+                }
+                else {
+                    Console.WriteLine("You don't have enough gold!");
+                    GameManager.Instance.PressEnterToContinue();
+                    shopState = ShowShields;
+                }
+            }
+            else {
+                Console.WriteLine("Invalid input!");
+                GameManager.Instance.PressEnterToContinue();
+                shopState = ShowShields;
             }
         }
     }
