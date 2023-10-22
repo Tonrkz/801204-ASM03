@@ -48,6 +48,7 @@ namespace ASM03_651310297 {
                 if (name == "") {
                     name = "Player";
                 }
+                Players.Instance.SetAllDefault();
                 Players.Instance.name = name;
                 ActivateProgramState = MapScreenState;
             }

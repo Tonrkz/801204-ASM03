@@ -199,6 +199,23 @@ namespace ASM03_651310297 {
             return "Invalid";
         }
 
+        public void SetAllDefault() {
+            HP = 10;
+            maxHP = 10;
+            level = 1;
+            EXP = 0;
+            maxEXP = 5;
+            ATK = 10;
+            DEF = 10;
+            AGI = 10;
+            gold = 0;
+            position = 0;
+            swordID = 0;
+            shieldID = 0;
+            sword = new Swords(0, "None", 0, 0, 0, 0);
+            shield = new Shields(0, "None", 0, 0, 0, 0);
+        }
+
         public Users(String a = "Player") {
             name = a;
             HP = 10;
