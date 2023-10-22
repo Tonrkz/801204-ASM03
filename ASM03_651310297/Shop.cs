@@ -98,9 +98,10 @@ namespace ASM03_651310297 {
                     Players.Instance.gold -= int.Parse(chosenSword.Element("price").Value);
                     Console.WriteLine($"\nYou bought {chosenSword.Element("name").Value}!");
                     Console.WriteLine($"You have {Players.Instance.gold} gold left.");
+                    Console.WriteLine(chosenSword);
                     GameManager.Instance.PressEnterToContinue();
                     Players.Instance.sword.Dequip();
-                    Players.Instance.sword = new Swords(byte.Parse(chosenSword.Element("ID").Value), chosenSword.Element("name").Value, int.Parse(chosenSword.Element("ATK").Value), int.Parse(chosenSword.Element("DEF").Value), int.Parse(chosenSword.Element("AGI").Value), int.Parse(chosenSword.Element("price").Value));
+                    Players.Instance.sword = new Swords(Byte.Parse(chosenSword.Attribute("id").Value), chosenSword.Element("name").Value, int.Parse(chosenSword.Element("ATK").Value), int.Parse(chosenSword.Element("DEF").Value), int.Parse(chosenSword.Element("AGI").Value), int.Parse(chosenSword.Element("price").Value));
                     Players.Instance.sword.Equip();
                     shopState = ShowShop;
                 }

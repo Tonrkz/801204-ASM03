@@ -5,12 +5,12 @@ using System.Text;
 
 namespace ASM03_651310297 {
     public abstract class Equipments {
-        Byte ID { get; set; }
+        public Byte ID { get; set; }
         public String name { get; set; }
-        public int ATK { get; }
-        public int DEF { get; }
-        public int price { get; }
-        public int AGI { get; }
+        public int ATK { get; set; }
+        public int DEF { get; set; }
+        public int price { get; set; }
+        public int AGI { get; set; }
 
         public Equipments(Byte ID = 0, String name = "None", int ATK = 0, int DEF = 0, int AGI = 0, int price = 0) {
             this.ID = ID;

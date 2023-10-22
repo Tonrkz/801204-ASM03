@@ -27,6 +27,10 @@ namespace ASM03_651310297 {
             AGI = 10;
             gold = 0;
             position = 0;
+            swordID = 0;
+            shieldID = 0;
+            sword = new Swords(0, "None", 0, 0, 0, 0);
+            shield = new Shields(0, "None", 0, 0, 0, 0);
         }
     }
 }

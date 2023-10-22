@@ -88,12 +88,13 @@ namespace ASM03_651310297 {
                     Players.Instance.shieldID = Byte.Parse(player.Element("shieldID").Value);
                     dragonDead = bool.Parse(player.Element("dragonDefeat").Value);
 
-                    XElement chosenSword = XMLOperator.Instance.LoadSwords().Elements("sword").Where(item => item.Element("ID").Value == player.Element("swordID").Value).FirstOrDefault();
+                    List<XElement> swordsList = XMLOperator.Instance.LoadSwords().Elements("sword").ToList();
+                    XElement chosenSword = swordsList.Find(x => x.Attribute("id").Value == player.Element("swordID").Value);
+                    Players.Instance.sword = new Swords(Byte.Parse(chosenSword.Attribute("id").Value), chosenSword.Element("name").Value, int.Parse(chosenSword.Element("ATK").Value), int.Parse(chosenSword.Element("DEF").Value), int.Parse(chosenSword.Element("AGI").Value), int.Parse(chosenSword.Element("price").Value));
 
-                    Players.Instance.sword = new Swords(byte.Parse(chosenSword.Element("ID").Value), chosenSword.Element("name").Value, int.Parse(chosenSword.Element("ATK").Value), int.Parse(chosenSword.Element("DEF").Value), int.Parse(chosenSword.Element("AGI").Value), int.Parse(chosenSword.Element("price").Value));
-
-                    XElement chosenShield = XMLOperator.Instance.LoadShields().Elements("shield").Where(item => item.Element("ID").Value == player.Element("shieldID").Value).FirstOrDefault();
-                    Players.Instance.shield = new Shields(byte.Parse(chosenShield.Element("ID").Value), chosenShield.Element("name").Value, int.Parse(chosenShield.Element("ATK").Value), int.Parse(chosenShield.Element("DEF").Value), int.Parse(chosenShield.Element("AGI").Value), int.Parse(chosenShield.Element("price").Value));
+                    List<XElement> shieldsList = XMLOperator.Instance.LoadShields().Elements("shield").ToList();
+                    XElement chosenShield = shieldsList.Find(x => x.Attribute("id").Value == player.Element("shieldID").Value);
+                    Players.Instance.shield = new Shields(Byte.Parse(chosenShield.Attribute("id").Value), chosenShield.Element("name").Value, int.Parse(chosenShield.Element("ATK").Value), int.Parse(chosenShield.Element("DEF").Value), int.Parse(chosenShield.Element("AGI").Value), int.Parse(chosenShield.Element("price").Value));
                     choose = true;
                 }
                 else {
