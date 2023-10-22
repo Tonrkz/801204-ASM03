@@ -1,4 +1,5 @@
 ﻿using System.Data.Common;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
@@ -101,6 +102,8 @@ namespace ASM03_651310297 {
                 else {
                     Console.WriteLine("Invalid name.");
                     GameManager.Instance.PressEnterToContinue();
+                    ActivateProgramState = StartScreenState;
+                    return;
                 }
             }
             ActivateProgramState = MapScreenState;
@@ -150,7 +153,7 @@ namespace ASM03_651310297 {
         }
 
         static void TownScreenState() {
-            String[] words = new String[] { "1. Shop", "2. Inn", "3. Exit" };
+            String[] words = new String[] { "Welcome to the town!", "", "1. Visit a shop.", "2. Sleep in hotel.", "3. Exit." };
             Console.Clear();
             Thread.Sleep(250);
             int y = Console.WindowHeight / 2 - 10;
@@ -206,7 +209,7 @@ namespace ASM03_651310297 {
             switch (Players.Instance.position) {
                 case 1:
                     int rng = aRandom.Next(1, 101);
-                    if (rng >= 85) {
+                    if (rng >= 90) {
                         BigSlimes aBigSlime = new BigSlimes();
                         Players.Instance.isEscape = false;
                         while (aBigSlime.HP >= 0) {
@@ -334,6 +337,8 @@ namespace ASM03_651310297 {
                             break;
                         }
                         if (aDragon.HP <= 0) {
+                            ActivateProgramState = EndGameScreenState;
+                            ActivateProgramState();
                             aDragon.Dead();
                             dragonDead = true;
                             break;
@@ -352,14 +357,7 @@ namespace ASM03_651310297 {
             Console.Clear();
             Console.SetCursorPosition(0, 0);
             Thread.Sleep(100);
-            Console.WriteLine($"Name: {Players.Instance.name}");
-            Console.WriteLine($"HP: {Players.Instance.HP}/{Players.Instance.maxHP}");
-            Console.WriteLine($"Level: {Players.Instance.level}");
-            Console.WriteLine($"EXP: {Players.Instance.EXP}/{Players.Instance.maxEXP}");
-            Console.WriteLine($"ATK: {Players.Instance.ATK}");
-            Console.WriteLine($"DEF: {Players.Instance.DEF}");
-            Console.WriteLine($"AGI: {Players.Instance.AGI}");
-            Console.WriteLine($"Gold: {Players.Instance.gold}");
+            Console.WriteLine($"Name: {Players.Instance.name}\nHP: {Players.Instance.HP}/{Players.Instance.maxHP}\nLevel: {Players.Instance.level}\nEXP: {Players.Instance.EXP}/{Players.Instance.maxEXP}\nATK: {Players.Instance.ATK}\nDEF: {Players.Instance.DEF}\nAGI: {Players.Instance.AGI}\nGold: {Players.Instance.gold}\n\nSword: {Players.Instance.sword.name}\nShield: {Players.Instance.shield.name}\n");
             Console.WriteLine("\nSaved.");
             GameManager.Instance.PressEnterToContinue();
             ActivateProgramState = MapScreenState;

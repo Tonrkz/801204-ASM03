@@ -13,7 +13,7 @@ namespace ASM03_651310297 {
             DEF = 2;
             AGI = 2;
             EXP = 5;
-            gold = 10;
+            gold = 15;
             isEscape = false;
         }
     }

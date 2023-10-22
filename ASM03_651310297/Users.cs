@@ -144,7 +144,7 @@ namespace ASM03_651310297 {
         }
 
         public void Status() {
-            Console.WriteLine($"Name: {name}\nHP: {HP}/{maxHP}\nLevel: {level}\nEXP: {EXP}/{maxEXP}\nATK: {ATK}\nDEF: {DEF}\nAGI: {AGI}\nGold: {gold}\n\nSword: {sword.name}\nShield: {shield.name}");
+            Console.WriteLine($"Name: {name}\nHP: {HP}/{maxHP}\nLevel: {level}\nEXP: {EXP}/{maxEXP}\nATK: {ATK}\nDEF: {DEF}\nAGI: {AGI}\nGold: {gold}\n\nSword: {sword.name}\nShield: {shield.name}\n");
             GameManager.Instance.PressEnterToContinue();
         }
 

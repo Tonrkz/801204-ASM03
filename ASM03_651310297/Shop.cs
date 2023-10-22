@@ -91,15 +91,18 @@ namespace ASM03_651310297 {
                 y++;
             }
             Console.SetCursorPosition(0, 41);
-            Console.Write("Input sword's name to buy: ");
+            Console.Write($"You have {Players.Instance.gold} gold.\nInput sword's name to buy ('Back' to exit): ");
             string input = Console.ReadLine();
-            XElement chosenSword = swordList.Find(x => x.Element("name").Value == input);
+            if (input.Contains("Back", StringComparison.OrdinalIgnoreCase)) {
+                shopState = ShowShop;
+                return;
+            }
+            XElement chosenSword = swordList.Find(x => x.Element("name").Value.Equals(input, StringComparison.OrdinalIgnoreCase));
             if (chosenSword != null) {
                 if (Players.Instance.gold >= int.Parse(chosenSword.Element("price").Value)) {
                     Players.Instance.gold -= int.Parse(chosenSword.Element("price").Value);
                     Console.WriteLine($"\nYou bought {chosenSword.Element("name").Value}!");
                     Console.WriteLine($"You have {Players.Instance.gold} gold left.");
-                    Console.WriteLine(chosenSword);
                     GameManager.Instance.PressEnterToContinue();
                     Players.Instance.sword.Dequip();
                     Players.Instance.sword = new Swords(Byte.Parse(chosenSword.Attribute("id").Value), chosenSword.Element("name").Value, int.Parse(chosenSword.Element("ATK").Value), int.Parse(chosenSword.Element("DEF").Value), int.Parse(chosenSword.Element("AGI").Value), int.Parse(chosenSword.Element("price").Value));
@@ -124,11 +127,7 @@ namespace ASM03_651310297 {
             Thread.Sleep(100);
             for (int i = 1 ; i < 6 ; i++) {
                 XElement shield = shieldList[i];
-                Console.WriteLine($"Name: {shield.Element("name").Value}\n" +
-                                                     $"ATK: {shield.Element("ATK").Value}\n" +
-                                                                                      $"DEF: {shield.Element("DEF").Value}\n" +
-                                                                                                                       $"AGI: {shield.Element("AGI").Value}\n" +
-                                                                                                                                                        $"Price: {shield.Element("price").Value}\n");
+                Console.WriteLine($"Name: {shield.Element("name").Value}\n" + $"ATK: {shield.Element("ATK").Value}\n" + $"DEF: {shield.Element("DEF").Value}\n" + $"AGI: {shield.Element("AGI").Value}\n" + $"Price: {shield.Element("price").Value}\n");
             }
             int x = 30;
             int y = 0;
@@ -154,15 +153,18 @@ namespace ASM03_651310297 {
                 y++;
             }
             Console.SetCursorPosition(0, 41);
-            Console.Write("Input shield's name to buy: ");
+            Console.Write($"You have {Players.Instance.gold} gold.\nInput shield's name to buy ('Back to exit'): ");
             string input = Console.ReadLine();
-            XElement chosenShield = shieldList.Find(x => x.Element("name").Value == input);
+            if (input.Contains("Back", StringComparison.OrdinalIgnoreCase)) {
+                shopState = ShowShop;
+                return;
+            }
+            XElement chosenShield = shieldList.Find(x => x.Element("name").Value.Equals(input, StringComparison.OrdinalIgnoreCase));
             if (chosenShield != null) {
                 if (Players.Instance.gold >= int.Parse(chosenShield.Element("price").Value)) {
                     Players.Instance.gold -= int.Parse(chosenShield.Element("price").Value);
                     Console.WriteLine($"\nYou bought {chosenShield.Element("name").Value}!");
                     Console.WriteLine($"You have {Players.Instance.gold} gold left.");
-                    Console.WriteLine(chosenShield);
                     GameManager.Instance.PressEnterToContinue();
                     Players.Instance.shield.Dequip();
                     Players.Instance.shield = new Shields(Byte.Parse(chosenShield.Attribute("id").Value), chosenShield.Element("name").Value, int.Parse(chosenShield.Element("ATK").Value), int.Parse(chosenShield.Element("DEF").Value), int.Parse(chosenShield.Element("AGI").Value), int.Parse(chosenShield.Element("price").Value));
