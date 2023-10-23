@@ -161,17 +161,32 @@ namespace ASM03_651310297 {
         }
 
         public void Dead(Monsters aMonster) {
-            String[] words = new String[] { $"You were killed by the {aMonster.name}", "Dragon still remains.", "Waiting for hero to try him." };
-            Console.Clear();
-            Thread.Sleep(250);
-            int y = Console.WindowHeight / 2 - 10;
-            foreach (var word in words) {
-                Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
-                Console.WriteLine(word);
-                y++;
+            if (bool.Parse(XMLOperator.Instance.LoadPlayer().Elements("player").Where(x => x.Attribute("name").Value == Players.Instance.name).First().Element("dragonDefeat").Value)) {
+                String[] words = new String[] { $"You were killed by the {aMonster.name}" };
+                Console.Clear();
+                Thread.Sleep(250);
+                int y = Console.WindowHeight / 2 - 10;
+                foreach (var word in words) {
+                    Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
+                    Console.WriteLine(word);
+                    y++;
+                }
+                Console.SetCursorPosition(0, 41);
+                GameManager.Instance.PressEnterToContinue();
             }
-            Console.SetCursorPosition(0, 41);
-            GameManager.Instance.PressEnterToContinue();
+            else {
+                String[] words = new String[] { $"You were killed by the {aMonster.name}", "Dragon still remains.", "Waiting for hero to try him." };
+                Console.Clear();
+                Thread.Sleep(250);
+                int y = Console.WindowHeight / 2 - 10;
+                foreach (var word in words) {
+                    Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
+                    Console.WriteLine(word);
+                    y++;
+                }
+                Console.SetCursorPosition(0, 41);
+                GameManager.Instance.PressEnterToContinue();
+            }
         }
 
         public void Status() {
