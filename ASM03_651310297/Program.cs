@@ -21,12 +21,14 @@ namespace ASM03_651310297 {
             GameManager.Instance.PressEnterToContinue();
             ActivateProgramState = StoryScreenState;
         }
+
         static void StoryScreenState() {
             Thread.Sleep(100);
             GameManager.Instance.StoryScreen();
             GameManager.Instance.PressEnterToContinue();
             ActivateProgramState = StartScreenState;
         }
+
         static void StartScreenState() {
             Console.Clear();
             Thread.Sleep(100);
@@ -41,6 +43,7 @@ namespace ASM03_651310297 {
                 ActivateProgramState = ExitGameState;
             }
         }
+
         static void CreatePlayerScreenState() {
             String name = GameManager.Instance.CreatePlayerScreen();
             Console.Write("Are you sure with that name? (Y/n): ");
@@ -57,6 +60,7 @@ namespace ASM03_651310297 {
                 ActivateProgramState = StartScreenState;
             }
         }
+
         static void LoadPlayerScreenState() {
             bool choose = false;
             while (!choose) {
@@ -108,6 +112,7 @@ namespace ASM03_651310297 {
             }
             ActivateProgramState = MapScreenState;
         }
+
         static void MapScreenState() {
             Map.Instance.UpdateMap();
             Map.Instance.ShowMap();
@@ -122,7 +127,7 @@ namespace ASM03_651310297 {
                 ActivateProgramState = SaveScreenState;
             }
             else if (state == "Exit") {
-                ActivateProgramState = ExitGameState;
+                ActivateProgramState = StartScreenState;
             }
             else {
                 Console.WriteLine("Invalid input.");
@@ -130,6 +135,7 @@ namespace ASM03_651310297 {
                 ActivateProgramState();
             }
         }
+        
         static void StatusScreenState() {
             Console.Clear();
             Console.SetCursorPosition(0, 0);
@@ -137,6 +143,7 @@ namespace ASM03_651310297 {
             Players.Instance.Status();
             ActivateProgramState = MapScreenState;
         }
+
         static void PlaceScreenState() {
             Console.WriteLine(Players.Instance.position);
             switch (Players.Instance.position) {
@@ -364,7 +371,7 @@ namespace ASM03_651310297 {
         }
 
         static void EndGameScreenState() {
-            String[] words = new String[] { "You have defeated the Dragon.", "There is no dragon anymore." };
+            String[] words = new String[] { "You have defeated the Dragon.", "There is no dragon anymore.", "Peace has come to this world again." };
             Console.Clear();
             Thread.Sleep(250);
             int y = Console.WindowHeight / 2 - 10;

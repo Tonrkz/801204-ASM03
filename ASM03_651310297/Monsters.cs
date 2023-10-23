@@ -105,6 +105,7 @@ namespace ASM03_651310297 {
             while (Players.Instance.EXP >= Players.Instance.maxEXP) {
                 Players.Instance.LevelUp(y);
             }
+            Console.SetCursorPosition(0, 41);
             GameManager.Instance.PressEnterToContinue();
         }
     }
