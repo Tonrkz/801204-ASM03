@@ -14,18 +14,19 @@ namespace ASM03_651310297 {
                 return instance;
             }
         }
-        public readonly bool[,] adjacencyMatrix = new bool[,] { { true, true, true, false, false },
-                                                                { true, true, false, true, false },
-                                                                { true, false, true, true, false },
-                                                                { false, true, true, true, true },
-                                                                { false, false, false, true, true } };
+        public readonly bool[,] adjacencyMatrix = new bool[,] { { true, true, true, false, false, false },
+                                                                { true, true, false, false, true, false },
+                                                                { true, false, true, true, true, false },
+                                                                { false, false, true, true, false, false },
+                                                                { false, true, true, false, true, true },
+                                                                { false, false, false, false, true, true } };
 
-        public char[][] map = new char[][] {  "                  ======  2.PLAIN  =================  4.VOLCANO  ".ToCharArray() ,
+        public char[][] map = new char[][] {  "                  ======  2.PLAIN  =================  5.VOLCANO  ".ToCharArray() ,
                                               "            ======                           ===          ||     ".ToCharArray(),
-                                              "  1.TOWN  ==                              ===             ||     ".ToCharArray(),
-                                              "            ======                     ===                ||     ".ToCharArray(),
-                                              "                  ======  3.FOREST  ===                   ||     ".ToCharArray(),
-                                              "                                                      5.CASTLE   ".ToCharArray() };
+                                              "  1.TOWN  ==============  3.FOREST  =========             ||     ".ToCharArray(),
+                                              "                             ||                           ||     ".ToCharArray(),
+                                              "                             ||                           ||     ".ToCharArray(),
+                                              "                        4.DEEP FOREST                 6.CASTLE   ".ToCharArray() };
         public void ShowMap() {
             Console.Clear();
             Thread.Sleep(250);
@@ -41,44 +42,52 @@ namespace ASM03_651310297 {
         public void UpdateMap() {
             switch (Players.Instance.position) {
                 case 0:
-                    map = new char[][] {  "                  ======  2.PLAIN  =================  4.VOLCANO  ".ToCharArray() ,
+                    map = new char[][] {  "                  ======  2.PLAIN  =================  5.VOLCANO  ".ToCharArray() ,
                                           "            ======                           ===          ||     ".ToCharArray(),
-                                          " [1.TOWN] ==                              ===             ||     ".ToCharArray(),
-                                          "            ======                     ===                ||     ".ToCharArray(),
-                                          "                  ======  3.FOREST  ===                   ||     ".ToCharArray(),
-                                          "                                                      5.CASTLE   ".ToCharArray() };
+                                          " [1.TOWN] ==============  3.FOREST  =========             ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                        4.DEEP FOREST                 6.CASTLE   ".ToCharArray() };
                     break;
                 case 1:
-                    map = new char[][] {  "                  ====== [2.PLAIN] =================  4.VOLCANO  ".ToCharArray() ,
+                    map = new char[][] {  "                  ====== [2.PLAIN] =================  5.VOLCANO  ".ToCharArray() ,
                                           "            ======                           ===          ||     ".ToCharArray(),
-                                          "  1.TOWN  ==                              ===             ||     ".ToCharArray(),
-                                          "            ======                     ===                ||     ".ToCharArray(),
-                                          "                  ======  3.FOREST  ===                   ||     ".ToCharArray(),
-                                          "                                                      5.CASTLE   ".ToCharArray() };
+                                          "  1.TOWN  ==============  3.FOREST  =========             ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                        4.DEEP FOREST                 6.CASTLE   ".ToCharArray() };
                     break;
                 case 2:
-                    map = new char[][] {  "                  ======  2.PLAIN  =================  4.VOLCANO  ".ToCharArray() ,
+                    map = new char[][] {  "                  ======  2.PLAIN  =================  5.VOLCANO  ".ToCharArray() ,
                                           "            ======                           ===          ||     ".ToCharArray(),
-                                          "  1.TOWN  ==                              ===             ||     ".ToCharArray(),
-                                          "            ======                     ===                ||     ".ToCharArray(),
-                                          "                  ====== [3.FOREST] ===                   ||     ".ToCharArray(),
-                                          "                                                      5.CASTLE   ".ToCharArray() };
+                                          "  1.TOWN  ============== [3.FOREST] =========             ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                        4.DEEP FOREST                 6.CASTLE   ".ToCharArray() };
                     break;
                 case 3:
-                    map = new char[][] {  "                  ======  2.PLAIN  ================= [4.VOLCANO] ".ToCharArray() ,
+                    map = new char[][] {  "                  ======  2.PLAIN  =================  5.VOLCANO  ".ToCharArray() ,
                                           "            ======                           ===          ||     ".ToCharArray(),
-                                          "  1.TOWN  ==                              ===             ||     ".ToCharArray(),
-                                          "            ======                     ===                ||     ".ToCharArray(),
-                                          "                  ======  3.FOREST  ===                   ||     ".ToCharArray(),
-                                          "                                                      5.CASTLE   ".ToCharArray() };
+                                          "  1.TOWN  ==============  3.FOREST  =========             ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                       [4.DEEP FOREST]                6.CASTLE   ".ToCharArray() };
                     break;
                 case 4:
-                    map = new char[][] {  "                  ======  2.PLAIN  =================  4.VOLCANO  ".ToCharArray() ,
+                    map = new char[][] {  "                  ======  2.PLAIN  ================= [5.VOLCANO] ".ToCharArray() ,
                                           "            ======                           ===          ||     ".ToCharArray(),
-                                          "  1.TOWN  ==                              ===             ||     ".ToCharArray(),
-                                          "            ======                     ===                ||     ".ToCharArray(),
-                                          "                  ======  3.FOREST  ===                   ||     ".ToCharArray(),
-                                          "                                                      [5.CASTLE] ".ToCharArray() };
+                                          "  1.TOWN  ==============  3.FOREST  =========             ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                        4.DEEP FOREST                 6.CASTLE   ".ToCharArray() };
+                    break;
+                case 5:
+                    map = new char[][] {  "                  ======  2.PLAIN  =================  5.VOLCANO  ".ToCharArray() ,
+                                          "            ======                           ===          ||     ".ToCharArray(),
+                                          "  1.TOWN  ==============  3.FOREST  =========             ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                             ||                           ||     ".ToCharArray(),
+                                          "                        4.DEEP FOREST                [6.CASTLE]  ".ToCharArray() };
                     break;
             }
         }

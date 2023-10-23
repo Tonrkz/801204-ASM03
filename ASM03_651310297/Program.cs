@@ -85,9 +85,9 @@ namespace ASM03_651310297 {
                     Players.Instance.level = Byte.Parse(player.Element("level").Value);
                     Players.Instance.EXP = int.Parse(player.Element("EXP").Value);
                     Players.Instance.maxEXP = int.Parse(player.Element("maxEXP").Value);
-                    Players.Instance.ATK = Byte.Parse(player.Element("ATK").Value);
-                    Players.Instance.DEF = Byte.Parse(player.Element("DEF").Value);
-                    Players.Instance.AGI = Byte.Parse(player.Element("AGI").Value);
+                    Players.Instance.ATK = int.Parse(player.Element("ATK").Value);
+                    Players.Instance.DEF = int.Parse(player.Element("DEF").Value);
+                    Players.Instance.AGI = int.Parse(player.Element("AGI").Value);
                     Players.Instance.position = Byte.Parse(player.Element("position").Value);
                     Players.Instance.gold = int.Parse(player.Element("gold").Value);
                     Players.Instance.swordID = Byte.Parse(player.Element("swordID").Value);
@@ -135,7 +135,7 @@ namespace ASM03_651310297 {
                 ActivateProgramState();
             }
         }
-        
+
         static void StatusScreenState() {
             Console.Clear();
             Console.SetCursorPosition(0, 0);
@@ -154,6 +154,7 @@ namespace ASM03_651310297 {
                 case 2:
                 case 3:
                 case 4:
+                case 5:
                     ActivateProgramState = BattleScreenState;
                     break;
             }
@@ -271,34 +272,95 @@ namespace ASM03_651310297 {
                         ActivateProgramState = MapScreenState;
                     }
                     break;
+
                 case 2:
-                    Zombies aZombie = new Zombies();
-                    Players.Instance.isEscape = false;
-                    while (aZombie.HP > 0) {
-                        Map.Instance.ShowBattle(aZombie.name);
-                        if (Players.Instance.HP <= 0) {
-                            Players.Instance.Dead(aZombie);
-                            ActivateProgramState = StoryScreenState;
-                            return;
+                    rng = aRandom.Next(1, 101);
+                    if (rng <= 20) {
+                        BigSlimes aBigSlime = new BigSlimes();
+                        Players.Instance.isEscape = false;
+                        while (aBigSlime.HP >= 0) {
+                            Map.Instance.ShowBattle(aBigSlime.name);
+                            if (Players.Instance.HP <= 0) {
+                                Players.Instance.Dead(aBigSlime);
+                                ActivateProgramState = StoryScreenState;
+                                return;
+                            }
+                            Players.Instance.ChooseBattleAction(aBigSlime);
+                            if (Players.Instance.isEscape) {
+                                break;
+                            }
+                            if (aBigSlime.HP <= 0) {
+                                aBigSlime.Dead();
+                                break;
+                            }
+                            Map.Instance.ShowBattle(aBigSlime.name);
+                            aBigSlime.ChooseBattleAction();
+                            aBigSlime.monsterAction();
+                            if (aBigSlime.isEscape) {
+                                break;
+                            }
                         }
-                        Players.Instance.ChooseBattleAction(aZombie);
-                        if (Players.Instance.isEscape) {
-                            break;
-                        }
-                        if (aZombie.HP <= 0) {
-                            aZombie.Dead();
-                            break;
-                        }
-                        Map.Instance.ShowBattle(aZombie.name);
-                        aZombie.ChooseBattleAction();
-                        aZombie.monsterAction();
-                        if (aZombie.isEscape) {
-                            break;
+                    }
+                    else {
+                        Zombies aZombie = new Zombies();
+                        Players.Instance.isEscape = false;
+                        while (aZombie.HP > 0) {
+                            Map.Instance.ShowBattle(aZombie.name);
+                            if (Players.Instance.HP <= 0) {
+                                Players.Instance.Dead(aZombie);
+                                ActivateProgramState = StoryScreenState;
+                                return;
+                            }
+                            Players.Instance.ChooseBattleAction(aZombie);
+                            if (Players.Instance.isEscape) {
+                                break;
+                            }
+                            if (aZombie.HP <= 0) {
+                                aZombie.Dead();
+                                break;
+                            }
+                            Map.Instance.ShowBattle(aZombie.name);
+                            aZombie.ChooseBattleAction();
+                            aZombie.monsterAction();
+                            if (aZombie.isEscape) {
+                                break;
+                            }
                         }
                     }
                     ActivateProgramState = MapScreenState;
                     break;
+
                 case 3:
+                    if (true) {
+                        BigSlimes aBigSlime = new BigSlimes();
+                        Players.Instance.isEscape = false;
+                        while (aBigSlime.HP >= 0) {
+                            Map.Instance.ShowBattle(aBigSlime.name);
+                            if (Players.Instance.HP <= 0) {
+                                Players.Instance.Dead(aBigSlime);
+                                ActivateProgramState = StoryScreenState;
+                                return;
+                            }
+                            Players.Instance.ChooseBattleAction(aBigSlime);
+                            if (Players.Instance.isEscape) {
+                                break;
+                            }
+                            if (aBigSlime.HP <= 0) {
+                                aBigSlime.Dead();
+                                break;
+                            }
+                            Map.Instance.ShowBattle(aBigSlime.name);
+                            aBigSlime.ChooseBattleAction();
+                            aBigSlime.monsterAction();
+                            if (aBigSlime.isEscape) {
+                                break;
+                            }
+                        }
+                    }
+                    ActivateProgramState = MapScreenState;
+                    break;
+
+                case 4:
                     Phoenixes aPhoenix = new Phoenixes();
                     Players.Instance.isEscape = false;
                     while (aPhoenix.HP >= 0) {
@@ -325,7 +387,8 @@ namespace ASM03_651310297 {
                     }
                     ActivateProgramState = MapScreenState;
                     break;
-                case 4:
+
+                case 5:
                     Dragons aDragon = new Dragons();
                     Players.Instance.isEscape = false;
                     if (dragonDead) {
