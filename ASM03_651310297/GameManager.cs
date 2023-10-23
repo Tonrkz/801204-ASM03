@@ -16,6 +16,8 @@ namespace ASM03_651310297 {
             Console.WindowHeight = 70;
             Console.BufferWidth = 250;
             Console.BufferHeight = 100;
+            Console.SetWindowSize(200, 70);
+            Console.SetBufferSize(250, 100);
             Console.Clear();
             Console.WriteLine("For a proper game displaying.\nThis game has to play with maximized or fullscreen window only.\nPlease enter fullscreen or maximized mode in your console app.\nThank you.");
         }
