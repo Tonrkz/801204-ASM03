@@ -8,7 +8,7 @@ namespace ASM03_651310297 {
         Random aRandom = new Random();
         public Dragons() {
             name = "Dragon";
-            HP = 1000;
+            HP = 2000;
             maxHP = 2000;
             ATK = 255;
             DEF = 255;
