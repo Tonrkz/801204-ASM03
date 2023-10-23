@@ -5,16 +5,16 @@ using System.Xml.Linq;
 
 namespace ASM03_651310297 {
     internal class Program {
+        static Program() {
+            Thread.Sleep(100);
+            ActivateProgramState = MaximizePleaseScreenState;
+        }
         static Random aRandom = new Random();
         static bool gameRunning = true;
         static bool dragonDead = false;
         delegate void State();
         static String state = "";
         static State ActivateProgramState;
-        static Program() {
-            Thread.Sleep(100);
-            ActivateProgramState = MaximizePleaseScreenState;
-        }
         static void MaximizePleaseScreenState() {
             Thread.Sleep(100);
             GameManager.Instance.MaximizePleaseScreen();
@@ -472,7 +472,14 @@ namespace ASM03_651310297 {
         private const int RESTORE = 9;
 
         static void Main(string[] args) {
+            ActivateProgramState();
             while (gameRunning) {
+                Console.WindowWidth = 200;
+                Console.WindowHeight = 70;
+                Console.BufferWidth = 250;
+                Console.BufferHeight = 100;
+                Console.SetWindowSize(200, 70);
+                Console.SetBufferSize(250, 100);
                 ShowWindow(ThisConsole, MAXIMIZE);
                 ActivateProgramState();
             }
