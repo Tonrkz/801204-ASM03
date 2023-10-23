@@ -472,7 +472,14 @@ namespace ASM03_651310297 {
         private const int RESTORE = 9;
 
         static void Main(string[] args) {
+            ActivateProgramState();
             while (gameRunning) {
+                Console.WindowWidth = 200;
+                Console.WindowHeight = 70;
+                Console.BufferWidth = 250;
+                Console.BufferHeight = 100;
+                Console.SetWindowSize(200, 70);
+                Console.SetBufferSize(250, 100);
                 ShowWindow(ThisConsole, MAXIMIZE);
                 ActivateProgramState();
             }
