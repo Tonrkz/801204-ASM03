@@ -160,8 +160,8 @@ namespace ASM03_651310297 {
             }
         }
 
-        public void Dead(Monsters aMonster) {
-            if (bool.Parse(XMLOperator.Instance.LoadPlayer().Elements("player").Where(x => x.Attribute("name").Value == Players.Instance.name).First().Element("dragonDefeat").Value)) {
+        public void Dead(Monsters aMonster, bool dragonDead) {
+            if (dragonDead) {
                 String[] words = new String[] { $"You were killed by the {aMonster.name}" };
                 Console.Clear();
                 Thread.Sleep(250);

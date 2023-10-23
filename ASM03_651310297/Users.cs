@@ -27,7 +27,7 @@ namespace ASM03_651310297 {
         public void ChooseBattleAction(Monsters aMonster);
         public void Attack(Monsters aMonster);
         public void Escape(Monsters aMonster);
-        public void Dead(Monsters aMonster);
+        public void Dead(Monsters aMonster, bool dragonDead);
         public void Status();
         public String MoveEnterStatusSaveExit();
         public void SetAllDefault();
