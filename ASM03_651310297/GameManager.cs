@@ -23,7 +23,7 @@ namespace ASM03_651310297 {
         public void StoryScreen() {
             String[] words = new String[] {
                 "Once upon a time, there was a castle.",
-                "The castle was taken over by dragons.",
+                "The castle was taken over by a dragon.",
                 "We need a hero to save the castle..."
             };
             int y = Console.WindowHeight / 2 - 8;

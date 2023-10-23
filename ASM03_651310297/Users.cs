@@ -29,6 +29,8 @@ namespace ASM03_651310297 {
                 EXP -= maxEXP;
                 maxEXP += 15;
                 level++;
+                sword.Dequip();
+                shield.Dequip();
                 if (level > 255) {
                     level = 255;
                 }
@@ -47,6 +49,8 @@ namespace ASM03_651310297 {
                 if (AGI > 255) {
                     AGI = 255;
                 }
+                sword.Equip();
+                shield.Equip();
                 Console.SetCursorPosition((Console.WindowWidth - "You leveled up!".Length) / 2, top);
                 Console.WriteLine("You leveled up!");
             }
