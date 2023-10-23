@@ -12,8 +12,8 @@ namespace ASM03_651310297 {
             ATK = 50;
             DEF = 50;
             AGI = 50;
-            EXP = 100;
-            gold = 100;
+            EXP = 250;
+            gold = 250;
             isEscape = false;
         }
     }
