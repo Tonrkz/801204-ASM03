@@ -165,7 +165,7 @@ namespace ASM03_651310297 {
                 String[] words = new String[] { $"You were killed by the {aMonster.name}" };
                 Console.Clear();
                 Thread.Sleep(250);
-                int y = Console.WindowHeight / 2 - 10;
+                int y = Console.WindowHeight / 2 - 5;
                 foreach (var word in words) {
                     Console.SetCursorPosition((Console.WindowWidth - word.Length) / 2, y);
                     Console.WriteLine(word);
