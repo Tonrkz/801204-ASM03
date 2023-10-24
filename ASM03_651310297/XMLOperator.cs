@@ -19,6 +19,10 @@ namespace ASM03_651310297 {
         String pathToPlayersXML = "Players.xml";
         XElement players;
         public XMLOperator() {
+            XDocument doc = new XDocument();
+            if (!File.Exists("Players.xml")) {
+                doc.Save("Players.xml");
+            }
             players = XElement.Load(pathToPlayersXML);
         }
 
