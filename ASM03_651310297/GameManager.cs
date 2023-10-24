@@ -19,7 +19,7 @@ namespace ASM03_651310297 {
             Console.SetWindowSize(200, 70);
             Console.SetBufferSize(250, 100);
             Console.Clear();
-            Console.WriteLine("For a proper game displaying.\nThis game has to play with maximized or fullscreen window only.\nPlease enter fullscreen or maximized mode in your console app.\nThank you.");
+            Console.WriteLine("For a proper game displaying.\nThis game has to play with maximized or fullscreen window only.\nPlease enter fullscreen or maximized mode in your console app.\nIf it's still error, try zooming out.\nThank you.");
         }
 
         public void StoryScreen() {
