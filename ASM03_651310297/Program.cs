@@ -226,10 +226,6 @@ namespace ASM03_651310297 {
                             if (Players.Instance.isEscape) {
                                 break;
                             }
-                            if (aBigSlime.HP <= 0) {
-                                aBigSlime.Dead();
-                                break;
-                            }
                             Map.Instance.ShowBattle(aBigSlime.name);
                             aBigSlime.ChooseBattleAction();
                             aBigSlime.monsterAction();
@@ -251,10 +247,6 @@ namespace ASM03_651310297 {
                             }
                             Players.Instance.ChooseBattleAction(aSlime);
                             if (Players.Instance.isEscape) {
-                                break;
-                            }
-                            if (aSlime.HP <= 0) {
-                                aSlime.Dead();
                                 break;
                             }
                             Map.Instance.ShowBattle(aSlime.name);
@@ -284,10 +276,6 @@ namespace ASM03_651310297 {
                             if (Players.Instance.isEscape) {
                                 break;
                             }
-                            if (aBigSlime.HP <= 0) {
-                                aBigSlime.Dead();
-                                break;
-                            }
                             Map.Instance.ShowBattle(aBigSlime.name);
                             aBigSlime.ChooseBattleAction();
                             aBigSlime.monsterAction();
@@ -308,10 +296,6 @@ namespace ASM03_651310297 {
                             }
                             Players.Instance.ChooseBattleAction(aZombie);
                             if (Players.Instance.isEscape) {
-                                break;
-                            }
-                            if (aZombie.HP <= 0) {
-                                aZombie.Dead();
                                 break;
                             }
                             Map.Instance.ShowBattle(aZombie.name);
@@ -340,10 +324,6 @@ namespace ASM03_651310297 {
                             if (Players.Instance.isEscape) {
                                 break;
                             }
-                            if (aBigSlime.HP <= 0) {
-                                aBigSlime.Dead();
-                                break;
-                            }
                             Map.Instance.ShowBattle(aBigSlime.name);
                             aBigSlime.ChooseBattleAction();
                             aBigSlime.monsterAction();
@@ -369,10 +349,6 @@ namespace ASM03_651310297 {
                         if (Players.Instance.isEscape) {
                             break;
                         }
-                        if (aPhoenix.HP <= 0) {
-                            aPhoenix.Dead();
-                            break;
-                        }
                         Map.Instance.ShowBattle(aPhoenix.name);
                         aPhoenix.ChooseBattleAction();
                         aPhoenix.monsterAction();
@@ -390,7 +366,7 @@ namespace ASM03_651310297 {
                         ActivateProgramState = EndGameScreenState;
                         break;
                     }
-                    while (aDragon.HP >= 0) {
+                    while (!dragonDead) {
                         Map.Instance.ShowBattle(aDragon.name);
                         if (Players.Instance.HP <= 0) {
                             Players.Instance.Dead(aDragon, dragonDead);
@@ -404,9 +380,7 @@ namespace ASM03_651310297 {
                         if (aDragon.HP <= 0) {
                             ActivateProgramState = EndGameScreenState;
                             ActivateProgramState();
-                            aDragon.Dead();
                             dragonDead = true;
-                            break;
                         }
                         Map.Instance.ShowBattle(aDragon.name);
                         aDragon.ChooseBattleAction();

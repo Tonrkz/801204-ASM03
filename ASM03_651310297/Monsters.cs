@@ -28,6 +28,10 @@ namespace ASM03_651310297 {
         public bool isEscape { get; set; }
 
         public void ChooseBattleAction() {
+            if (HP <= 0) {
+                monsterAction = Dead;
+                return;
+            }
             int rng = aRandom.Next(1, 101);
             if (rng < 26 && HP <= maxHP / 2) {
                 monsterAction = Escape;
