@@ -42,10 +42,10 @@ namespace ASM03_651310297 {
             string input = Console.ReadLine();
             switch (input) {
                 case "1":
-                    ShowSwords();
+                    shopState = ShowSwords;
                     break;
                 case "2":
-                    ShowShields();
+                    shopState = ShowShields;
                     break;
                 case "3":
                     inShop = false;
