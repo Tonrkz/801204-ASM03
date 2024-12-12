@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Players>
+  <player name="GM">
+    <HP>10</HP>
+    <maxHP>10</maxHP>
+    <level>1</level>
+    <EXP>10000000</EXP>
+    <maxEXP>5</maxEXP>
+    <ATK>10</ATK>
+    <DEF>10</DEF>
+    <AGI>10</AGI>
+    <position>0</position>
+    <gold>10000000</gold>
+    <swordID>0</swordID>
+    <shieldID>0</shieldID>
+    <dragonDefeat>false</dragonDefeat>
+  </player>
+  <player name="lnwnadia">
+    <HP>20</HP>
+    <maxHP>20</maxHP>
+    <level>3</level>
+    <EXP>0</EXP>
+    <maxEXP>35</maxEXP>
+    <ATK>19</ATK>
+    <DEF>16</DEF>
+    <AGI>11</AGI>
+    <position>0</position>
+    <gold>0</gold>
+    <swordID>2</swordID>
+    <shieldID>0</shieldID>
+    <dragonDefeat>false</dragonDefeat>
+  </player>
+  <player name="wave">
+    <HP>25</HP>
+    <maxHP>25</maxHP>
+    <level>4</level>
+    <EXP>0</EXP>
+    <maxEXP>50</maxEXP>
+    <ATK>16</ATK>
+    <DEF>16</DEF>
+    <AGI>16</AGI>
+    <position>1</position>
+    <gold>120</gold>
+    <swordID>0</swordID>
+    <shieldID>0</shieldID>
+    <dragonDefeat>false</dragonDefeat>
+  </player>
+  <player name="Player">
+    <HP>655</HP>
+    <maxHP>655</maxHP>
+    <level>130</level>
+    <EXP>1335</EXP>
+    <maxEXP>1940</maxEXP>
+    <ATK>775</ATK>
+    <DEF>580</DEF>
+    <AGI>255</AGI>
+    <position>4</position>
+    <gold>52090</gold>
+    <swordID>10</swordID>
+    <shieldID>9</shieldID>
+    <dragonDefeat>true</dragonDefeat>
+  </player>
+</Players>

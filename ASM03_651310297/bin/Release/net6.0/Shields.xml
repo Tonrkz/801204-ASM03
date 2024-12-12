@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Shields>
+  <shield id="0">
+    <name>None</name>
+    <price>0</price>
+    <ATK>0</ATK>
+    <DEF>0</DEF>
+    <AGI>0</AGI>
+   </shield>
+  
+  <shield id="1">
+    <name>Wooden Shield</name>
+    <price>10</price>
+    <ATK>0</ATK>
+    <DEF>1</DEF>
+    <AGI>0</AGI>
+  </shield>
+  
+  <shield id="2">
+    <name>Iron Shield</name>
+    <price>50</price>
+    <ATK>2</ATK>
+    <DEF>5</DEF>
+    <AGI>-3</AGI>
+  </shield>
+  <shield id="3">
+    
+    <name>Steel Shield</name>
+    <price>100</price>
+    <ATK>5</ATK>
+    <DEF>10</DEF>
+    <AGI>-5</AGI>
+  </shield>
+  
+  <shield id="4">
+    <name>Gold Shield</name>
+    <price>250</price>
+    <ATK>5</ATK>
+    <DEF>5</DEF>
+    <AGI>0</AGI>
+  </shield>
+  
+  <shield id="5">
+    <name>Diamond Shield</name>
+    <price>500</price>
+    <ATK>7</ATK>
+    <DEF>12</DEF>
+    <AGI>-2</AGI>
+  </shield>
+  
+  <shield id="6">
+    <name>Platinum Shield</name>
+    <price>1000</price>
+    <ATK>10</ATK>
+    <DEF>25</DEF>
+    <AGI>-10</AGI>
+  </shield>
+  
+  <shield id="7">
+    <name>Adamantium Shield</name>
+    <price>2000</price>
+    <ATK>10</ATK>
+    <DEF>35</DEF>
+    <AGI>-20</AGI>
+  </shield>
+  
+  <shield id="8">
+    <name>Black Shield</name>
+    <price>5000</price>
+    <ATK>15</ATK>
+    <DEF>50</DEF>
+    <AGI>-20</AGI>
+  </shield>
+  
+  <shield id="9">
+    <name>Ultimate Shield</name>
+    <price>10000</price>
+    <ATK>20</ATK>
+    <DEF>75</DEF>
+    <AGI>0</AGI>
+  </shield>
+  
+  <shield id="10">
+    <name>God Shield</name>
+    <price>50000</price>
+    <ATK>100</ATK>
+    <DEF>100</DEF>
+    <AGI>0</AGI>
+  </shield>
+</Shields>

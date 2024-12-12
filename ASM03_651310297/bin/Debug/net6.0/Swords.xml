@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Swords>
+  <sword id="0">
+    <name>None</name>
+    <price>0</price>
+    <ATK>0</ATK>
+    <DEF>0</DEF>
+    <AGI>0</AGI>
+  </sword>
+
+  <sword id="1">
+    <name>Wooden Sword</name>
+    <price>10</price>
+    <ATK>1</ATK>
+    <DEF>0</DEF>
+    <AGI>0</AGI>
+  </sword>
+
+  <sword id="2">
+    <name>Iron Sword</name>
+    <price>50</price>
+    <ATK>5</ATK>
+    <DEF>2</DEF>
+    <AGI>-3</AGI>
+  </sword>
+
+  <sword id="3">
+    <name>Steel Sword</name>
+    <price>100</price>
+    <ATK>10</ATK>
+    <DEF>5</DEF>
+    <AGI>-5</AGI>
+  </sword>
+
+  <sword id="4">
+    <name>Gold Sword</name>
+    <price>250</price>
+    <ATK>5</ATK>
+    <DEF>5</DEF>
+    <AGI>0</AGI>
+  </sword>
+
+  <sword id="5">
+    <name>Diamond Sword</name>
+    <price>500</price>
+    <ATK>12</ATK>
+    <DEF>7</DEF>
+    <AGI>-2</AGI>
+  </sword>
+
+  <sword id="6">
+    <name>Platinum Sword</name>
+    <price>1000</price>
+    <ATK>25</ATK>
+    <DEF>10</DEF>
+    <AGI>-10</AGI>
+  </sword>
+
+  <sword id="7">
+    <name>Adamantium Sword</name>
+    <price>2000</price>
+    <ATK>50</ATK>
+    <DEF>25</DEF>
+    <AGI>-20</AGI>
+  </sword>
+
+  <sword id="8">
+    <name>Excalibur</name>
+    <price>5000</price>
+    <ATK>100</ATK>
+    <DEF>50</DEF>
+    <AGI>-50</AGI>
+  </sword>
+
+  <sword id="9">
+    <name>Ultima Weapon</name>
+    <price>10000</price>
+    <ATK>200</ATK>
+    <DEF>100</DEF>
+    <AGI>-50</AGI>
+  </sword>
+
+  <sword id="10">
+    <name>God Sword</name>
+    <price>50000</price>
+    <ATK>500</ATK>
+    <DEF>250</DEF>
+    <AGI>0</AGI>
+  </sword>
+
+</Swords>
